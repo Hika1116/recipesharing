@@ -1,0 +1,6 @@
+
+# dockerのlogファイル
+logs/
+
+# laravelのlogファイル
+src/storage/
