@@ -11,7 +11,7 @@ class RecipeProcessTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('recipesprocess')->insert(
+        DB::table('recipesprocess')->insert([
             [ 
                 'recipe_id'=>1,
                  'recipe_order'=>1,
@@ -27,6 +27,6 @@ class RecipeProcessTableSeeder extends Seeder
                 'recipe_order' => 3,
                 'process_text' => 'レシピ手順3'
             ],
-        );
+        ]);
     }
 }

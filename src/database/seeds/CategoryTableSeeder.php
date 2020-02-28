@@ -11,10 +11,10 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categorys')->insert(
+        DB::table('categorys')->insert([
             ['category_name'=>'朝食',],
             ['category_name' => '昼食',],
             ['category_name' => '夕食',],
-        );
+        ]);
     }
 }

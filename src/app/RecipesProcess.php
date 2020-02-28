@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class RecipesProcess extends Model
 {
     /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'recipesprocess';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

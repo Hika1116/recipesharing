@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
         $param = [
             'name'=> 'hikaru',
             'email'=> 'hiro_hika_1116@icloud.com',
-            'password'=> 'hika1116',
+            'password'=> bcrypt('hika1116'),
         ];
         DB::table('users')->insert($param);
     }

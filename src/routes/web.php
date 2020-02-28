@@ -14,6 +14,3 @@
 Route::get('/introduce', 'IntroduceController@index')->name('introduce');
 
 Route::get('/recipes', 'RecipeListController@index')->name('recipes');
-
-
-

@@ -11,7 +11,7 @@ class RecipeTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('recipes')->insert(
+        DB::table('recipes')->insert([
             [ 
                 'user_id'=>1
                 , 'category_id'=>1
@@ -36,6 +36,6 @@ class RecipeTableSeeder extends Seeder
                 ,'title'=>'title4'
                 , 'sentence'=>'4番目のレシピ投稿です。'
             ],
-        );
+        ]);
     }
 }
