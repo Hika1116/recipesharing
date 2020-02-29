@@ -80,3 +80,11 @@ mbind: Operation not permitted
 2020-02-28T11:00:03.801000+09:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
 2020-02-28T11:00:03.840774+09:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock' bind-address: '::' port: 33060
 2020-02-28T17:27:28.786328+09:00 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.19)  MySQL Community Server - GPL.
+2020-02-29T01:03:03.396417+09:00 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+2020-02-29T01:03:03.397202+09:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.19) starting as process 1
+2020-02-29T01:03:04.055374+09:00 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2020-02-29T01:03:04.066340+09:00 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2020-02-29T01:03:04.100550+09:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2020-02-29T01:03:04.105045+09:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2020-02-29T01:03:04.148744+09:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2020-02-29T01:03:04.275743+09:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock' bind-address: '::' port: 33060

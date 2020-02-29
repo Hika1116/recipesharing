@@ -20,6 +20,6 @@ class Recipe extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'category_id', 'title', 'sentence',
+        'user_id', 'title', 'sentence','created_sum'
     ];
 }

@@ -14,25 +14,21 @@ class RecipeTableSeeder extends Seeder
         DB::table('recipes')->insert([
             [ 
                 'user_id'=>1
-                , 'category_id'=>1
                 ,'title'=>'title1'
                 , 'sentence'=>'1番目のレシピ投稿です。'
             ],
             [ 
                 'user_id'=>1
-                , 'category_id'=>1
                 ,'title'=>'title3'
                 , 'sentence'=>'2番目のレシピ投稿です。'
             ],
             [ 
                 'user_id'=>1
-                , 'category_id'=>1
                 ,'title'=>'title3'
                 , 'sentence'=>'3番目のレシピ投稿です。'
             ],
             [ 
                 'user_id'=>1
-                , 'category_id'=>1
                 ,'title'=>'title4'
                 , 'sentence'=>'4番目のレシピ投稿です。'
             ],
