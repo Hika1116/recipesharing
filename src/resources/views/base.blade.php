@@ -8,11 +8,21 @@
   <meta name="description" content="ページの内容を表す文章" />
   <link rel="canonical" href="正規化するURL" /><!-- URLの正規化 -->
   <title>@yield('title')</title>
-
+  <link rel="stylesheet" href="{{asset('css/base.css')}}">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
+  <script src="{{ mix('js/base.js') }}" defer></script>
+  
+  <div id="header">
+    <header-component></header-component>
+  </div>
+
     @yield('container')
+
+  <div id="footer">
+    <footer-component></footer-component>
+  </div>
 </body>
 </html>
 
