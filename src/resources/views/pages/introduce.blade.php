@@ -3,8 +3,12 @@
   Introduce 
  @endsection
  @section('container')
+
+  <script src="{{ mix('js/introduce.js') }}" defer></script>
      <div>
-       <p>ここは訪問者が初回に訪れるページです。</p>
-     <p><a href="{{route('recipes')}}">リスト一覧へ</a></p>
+       <div id="top-header">
+        <Top-header></Top-header>
+       </div>
+       <p><a href="{{route('recipes')}}">リスト一覧へ</a></p>
      </div>
  @endsection
