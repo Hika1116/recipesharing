@@ -6,9 +6,10 @@
 
   <script src="{{ mix('js/introduce.js') }}" defer></script>
      <div>
-       <div id="top-header">
-        <Top-header></Top-header>
+       <div id="warapper">
+        <top-header></top-header>
+        <top-sentence></top-sentence>
        </div>
-       <p><a href="{{route('recipes')}}">リスト一覧へ</a></p>
+       <!-- <a><a href="{{route('recipes')}}">リスト一覧へ</a></p> -->
      </div>
  @endsection

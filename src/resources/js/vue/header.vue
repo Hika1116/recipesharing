@@ -25,6 +25,7 @@
     .title h2 {
         display: block;
         margin: 0;
+        color: white;
     }
     .menu {
         display: flex;
@@ -47,6 +48,6 @@
         width: 100%;
         height: 60px; 
         text-align: center;
-        background-color: #ecece9;
+        background-color: #BCB5B5;
     }
 </style>

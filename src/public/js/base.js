@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nfooter {\n    width: 100%;\n    height: 60px; \n    text-align: center;\n    padding: 20px 0;\n    background-color: #ecece9;\n}\n", ""]);
+exports.push([module.i, "\nfooter {\n    width: 100%;\n    height: 60px; \n    text-align: center;\n    padding: 20px 0;\n    background-color: #BCB5B5;\n    color: white;\n    margin-top: 50px;\n}\n", ""]);
 
 // exports
 
@@ -117,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container {\n    display: flex;\n}\n.title {\n    display: flex;\n    align-items: center;\n    width: 400px;\n    margin-left: 30px;\n}\n.title h2 {\n    display: block;\n    margin: 0;\n}\n.menu {\n    display: flex;\n    width: calc(100vw - 400px);\n    justify-content: flex-end;\n    margin: 0;\n}\n.menu ul {\n    display: flex;\n    align-items: center;\n    list-style: none;\n    margin-right: 30px;\n}\n.menu ul li {\n    margin-right: 20px;\n}\n.container {\n    width: 100%;\n    height: 60px; \n    text-align: center;\n    background-color: #ecece9;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    display: flex;\n}\n.title {\n    display: flex;\n    align-items: center;\n    width: 400px;\n    margin-left: 30px;\n}\n.title h2 {\n    display: block;\n    margin: 0;\n    color: white;\n}\n.menu {\n    display: flex;\n    width: calc(100vw - 400px);\n    justify-content: flex-end;\n    margin: 0;\n}\n.menu ul {\n    display: flex;\n    align-items: center;\n    list-style: none;\n    margin-right: 30px;\n}\n.menu ul li {\n    margin-right: 20px;\n}\n.container {\n    width: 100%;\n    height: 60px; \n    text-align: center;\n    background-color: #BCB5B5;\n}\n", ""]);
 
 // exports
 

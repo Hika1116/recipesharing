@@ -11,6 +11,8 @@
         height: 60px; 
         text-align: center;
         padding: 20px 0;
-        background-color: #ecece9;
+        background-color: #BCB5B5;
+        color: white;
+        margin-top: 50px;
     }
 </style>

@@ -3,10 +3,12 @@ require('./bootstrap');
 import Vue from 'vue'
 
 import TopHeader from './vue/top_header.vue';
+import TopSentence from './vue/top_sentence_1.vue';
 
 new Vue({
-    el: '#top-header',
+    el: '#warapper',
     components: {
-        TopHeader: TopHeader
-    }
+        TopHeader: TopHeader,
+        TopSentence:TopSentence,
+    },
 })
