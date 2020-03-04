@@ -10,6 +10,7 @@
   <title>@yield('title')</title>
   <link rel="stylesheet" href="{{asset('css/base.css')}}">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ffcdbb6add.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <script src="{{ mix('js/base.js') }}" defer></script>

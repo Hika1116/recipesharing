@@ -15,7 +15,7 @@ class RecipeTableSeeder extends Seeder
             [ 
                 'user_id'=>1
                 ,'title'=>'title1'
-                , 'sentence'=>'1番目のレシピ投稿です。'
+                , 'sentence'=>'1番目のレシピ投稿です。初めての投稿です。手軽で簡単なレシピなのでみなさん真似してみてください。'
             ],
             [ 
                 'user_id'=>1

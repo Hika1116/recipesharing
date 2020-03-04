@@ -1937,12 +1937,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       title: 'レシピ1',
       categoryList: ['#夕飯', '#あっさり', '#肉料理'],
-      materials: '人参、豚肉、ほうれん草、、、'
+      userName: 'hikaru',
+      favaritCount: 11,
+      materials: '人参、豚肉、ほうれん草、、、',
+      detailContext: '1番目のレシピになります。ここにはレシピの紹介文が表示されます。'
     };
   }
 });
@@ -1961,7 +1966,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#recipe-card {\n    display: flex;\n    width: 600px;\n    padding: 20px 50px;\n    border: solid 2px #BCB5B5;\n    border-radius: 10px;\n    margin: 20px auto;\n     box-shadow: 0 0 3px #BCB5B5;\n}\n#recipe-card-img {\n    width: 300px;\n}\n#recipe-card-detail {\n    width: 100%;\n    display: block;\n}\n#recipe-card-detail h3 {\n    color: #BCB5B5;\n    margin: 0;\n    font-size: 1.5rem;\n}\n#recipe-card-detail hr {\n    margin: 0;\n}\n#category-tag-area {\n    display: flex;\n    padding:0;\n    margin:5px 0 0 0;\n}\n#category-tag-area p  {\n    display: block;\n    margin: 0 10px 0 0;\n    padding:3px 10px;\n    border-radius: 10px;\n    border: solid 1px #F7B46B;\n    background-color: #F7B46B;\n}\n#category-tag-area p a {\n    text-decoration: none;\n    color: white;\n    font-size: .8rem;\n}\n#recipe-card-function{\n    display: flex;\n    justify-content: flex-end;\n}\n#recipe-card-function a {\n    padding: 3px 10px;\n    border-radius: 10px;\n    border: solid 1px #EF866B;\n    background-color: #EF866B;\n    text-decoration: none;\n    color: white;\n    margin: 0 10px 0 0;\n}\n#recipe-context {\n    color: #BCB5B5;\n}\n#mategial-area p {\n    color: #BCB5B5;\n}\n", ""]);
+exports.push([module.i, "\n#recipe-card {\n    display: flex;\n    width: 600px;\n    padding: 20px 50px;\n    border: solid 2px #BCB5B5;\n    border-radius: 10px;\n    margin: 20px auto;\n     box-shadow: 0 0 3px #BCB5B5;\n}\n#recipe-card-img {\n    width: 300px;\n}\n#recipe-card-detail {\n    width: 100%;\n    display: block;\n}\n#recipe-card-detail h3 {\n    color: #BCB5B5;\n    margin: 0;\n    font-size: 1.5rem;\n}\n#recipe-card-detail hr {\n    margin: 0;\n}\n#username-and-favaritcount {\n    display: flex;\n    font-size: .8rem;\n    color: #BCB5B5;\n}\n#user-name {\n    margin: 3px 0;\n}\n#user-name a{\n    color: #BCB5B5;\n}\n#favarit-count {\n    margin: 3px 30px;\n}\n#favarit-count span {\n    color: #F7B46B;\n}\n#category-tag-area {\n    display: flex;\n    padding:0;\n    margin:5px 0 0 0;\n}\n#category-tag-area p {\n    margin: 0 10px 0 0;\n    background-color: #BCB5B5;\n    border-radius: 10px;\n}\n#category-tag-area p:hover {\n    opacity: 0.8;\n}\n#category-tag-area p a {\n    font-size: .8rem;\n    text-decoration: none;\n    color: white;\n    margin: 3px 5px;\n}\n#recipe-context {\n    color: #BCB5B5;\n}\n#mategial-area p {\n    color: #BCB5B5;\n}\n#favarit-botton-area {\n    display: inline-block;\n    margin: 0;\n    padding: 0;\n    font-size: .8rem;\n    border: solid 1px #BCB5B5;\n    background-color: #F7B46B;\n    border-radius: 10px;\n}\n#favarit-botton-area:hover {\n    opacity: 0.8;\n}\n#favarit-star {\n    display: inline-block;\n    color: white;\n    margin: 0;\n    padding: 1px 5px;\n    border-radius: 10px 0 0 10px;\n}\n#favarit-text {\n    display: inline-block;\n    background: white;\n    color: #F7B46B;\n    text-decoration: none;\n    border-radius: 0 10px 10px 0;\n    margin: 0;\n    padding: 1px 10px;\n}\n", ""]);
 
 // exports
 
@@ -20203,6 +20208,18 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
+      _c("div", { attrs: { id: "username-and-favaritcount" } }, [
+        _c("p", { attrs: { id: "user-name" } }, [
+          _vm._v("by "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(_vm.userName))])
+        ]),
+        _vm._v(" "),
+        _c("p", { attrs: { id: "favarit-count" } }, [
+          _c("span", [_vm._v("★")]),
+          _vm._v(_vm._s(_vm.favaritCount))
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { attrs: { id: "category-tag-area" } },
@@ -20214,12 +20231,9 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c(
-        "p",
-        { attrs: { id: "recipe-context" } },
-        [_vm._t("recipe-context")],
-        2
-      ),
+      _c("p", { attrs: { id: "recipe-context" } }, [
+        _vm._v("\n            " + _vm._s(_vm.detailContext) + "\n        ")
+      ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "mategial-area" } }, [
         _c("p", [_vm._v("材料: " + _vm._s(_vm.materials))])
@@ -20234,10 +20248,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "recipe-card-function" } }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Hikaru")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("お気に入り")])
+    return _c("div", { attrs: { id: "favarit-botton-area" } }, [
+      _c("span", { attrs: { id: "favarit-star" } }, [_vm._v("★")]),
+      _c("a", { attrs: { id: "favarit-text", href: "#" } }, [
+        _vm._v("お気に入り")
+      ])
     ])
   }
 ]

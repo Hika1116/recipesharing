@@ -6,17 +6,9 @@
 
   <script src="{{ mix('js/recipe_list.js') }}" defer></script>
      <div id='wrapper-recipe'>
-       <h2>レシピ一覧</h2>
-       <hr>
-
-       <div>
+      <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
          <recipe-card>
-           <template v-slot:recipe-context>
-             1番目のレシピになります。<br>
-             ここにはレシピの紹介文が表示されます。
-           </template>
          </recipe-card>
-       </div>
      </div>
 
      <style>
@@ -25,17 +17,17 @@
          margin: 30px auto;
          border: solid 2px #BCB5B5;
          box-shadow: 0 0 8px #BCB5B5;
-         border-radius: 10px;
-       }
-       #wrapper-recipe hr {
-         color: #BCB5B5;
-         size: 2px;
+         border-radius: 12px;
        }
        #wrapper-recipe h2 {
          font-size: 1.5rem;
-         color: #BCB5B5;
+         color: white;
          margin-left: 20px;
          font-weight: bold;
+         background-color: #EF866B;
+         margin: 0;
+         padding: 15px;
+         border-radius: 10px 10px 0 0;
        }
      </style>
  @endsection

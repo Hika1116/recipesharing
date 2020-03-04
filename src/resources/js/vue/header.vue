@@ -6,7 +6,8 @@
         <div class="menu">
             <ul>
                 <li><a href="#">Hikaru</a></li>
-                <li><a href="#">LogIn</a></li>
+                <li>|</li>
+                <li><a href="#">LogOut</a></li>
             </ul>
         </div>
     </header>
@@ -41,9 +42,16 @@
     }
     .menu ul li {
         margin-right: 20px;
+        color: white;
+    }
+    .menu ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    .menu ul li a:hover {
+        opacity: 0.6;
     }
     
-
     .container {
         width: 100%;
         height: 60px; 
