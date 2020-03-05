@@ -1,25 +1,23 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Recipe extends Model
+class RecipesProcess extends Model
 {
-
     /**
      * モデルと関連しているテーブル
      *
      * @var string
      */
-    protected $table = 'recipes';
-
+    protected $table = 'recipesprocess';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'sentence','created_sum'
+        'recipe_id', 'recipe_order', 'process_text',
     ];
 }

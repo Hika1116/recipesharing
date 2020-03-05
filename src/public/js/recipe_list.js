@@ -1938,8 +1938,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['recipe'],
   data: function data() {
     return {
       title: 'レシピ1',
@@ -20204,14 +20204,16 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { attrs: { id: "recipe-card-detail" } }, [
-      _c("h3", [_vm._v(_vm._s(_vm.title))]),
+      _c("h3", [_vm._v(_vm._s(_vm.recipe.title))]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
       _c("div", { attrs: { id: "username-and-favaritcount" } }, [
         _c("p", { attrs: { id: "user-name" } }, [
           _vm._v("by "),
-          _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(_vm.userName))])
+          _c("a", { attrs: { href: "#" } }, [
+            _vm._v(_vm._s(_vm.recipe.user_info.name))
+          ])
         ]),
         _vm._v(" "),
         _c("p", { attrs: { id: "favarit-count" } }, [
@@ -20225,14 +20227,16 @@ var render = function() {
         { attrs: { id: "category-tag-area" } },
         _vm._l(_vm.categoryList, function(category) {
           return _c("p", { key: category }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(category))])
+            _c("a", { attrs: { href: "/introduce" } }, [
+              _vm._v(_vm._s(category))
+            ])
           ])
         }),
         0
       ),
       _vm._v(" "),
       _c("p", { attrs: { id: "recipe-context" } }, [
-        _vm._v("\n            " + _vm._s(_vm.detailContext) + "\n        ")
+        _vm._v("\n            " + _vm._s(_vm.recipe.sentence) + "\n        ")
       ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "mategial-area" } }, [

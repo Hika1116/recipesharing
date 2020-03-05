@@ -4,33 +4,33 @@
             <img :src="cardImg" alt="card-img">
         </div>
         <div id='recipe-card-detail'>
-            <h3>{{title}}</h3>
+            <h3>{{recipe.title}}</h3>
             <hr>
             <div id='username-and-favaritcount'>
-                <p id="user-name">by <a href="#">{{userName}}</a></p>
+                <p id="user-name">by <a href="#">{{recipe.user_info.name}}</a></p>
                 <p id="favarit-count"><span>★</span>{{favaritCount}}</p>
             </div>
             <div id="category-tag-area">
                 <p v-for="category in categoryList" :key="category">
-                    <a href="#">{{category}}</a>
+                    <a href='/introduce'>{{category}}</a>
                 </p>
             </div>
             <p id="recipe-context">
-                {{detailContext}}
+                {{recipe.sentence}}
             </p>
             <div id="mategial-area">
                 <p>材料: {{materials}}</p>
             </div>
             <div id="favarit-botton-area">
                 <span id="favarit-star">★</span><a id="favarit-text" href="#">お気に入り</a>
-            </div>
-                
+            </div> 
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props:['recipe'],
     data(){
         return {
             title:'レシピ1',

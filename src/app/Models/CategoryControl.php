@@ -1,17 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class CategoryControl extends Model
 {
     /**
      * モデルと関連しているテーブル
      *
      * @var string
      */
-    protected $table = 'categorys';
+    protected $table = 'categorycontrol';
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +19,10 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'category_name',
+        'recipe_id','category_id',
     ];
+
+    public function categorys(){
+        return $this->hasMany(Category::class);
+    }
 }
