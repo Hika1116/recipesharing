@@ -14,10 +14,14 @@ class RecipeListController extends Controller
 
         $recipes = Recipe::all();
 
-        $categoryinfo = CategoryInfo::all();
-        Log::debug($categoryinfo[0]->catevory_name);
+        // $categoryinfo = CategoryInfo::all();
+        // Log::debug(gettype($categoryinfo));
 
-        Log::debug('ここまでOKです');
+        $categoryInfo = CategoryInfo::all();
+
+        Log::debug(count($categoryInfo));
+        Log::debug($categoryInfo[0]->category_name);
+        Log::debug(dd($categoryInfo));
 
         $recipe_list = [];
         foreach($recipes as $recipe){
@@ -25,12 +29,8 @@ class RecipeListController extends Controller
             
             $recipe_element->user_info = $recipe->user;
             $recipe_element->recipe_info = $recipe;
-            // Log::debug($recipe->categoryControl->categorys->category_name);
 
-            // $recipe_element->categorys = $recipe->categoryControl->categorys;
-            // $recipe_element->materials = $recipe->materialControl->materials;
-
-            $recipe_element->categorys = [];
+            $recipe_element->categorys = $recipe->categoryControl;
             $recipe_element->materials = [];
             $recipe_list[] = $recipe_element;
         }

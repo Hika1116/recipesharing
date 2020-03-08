@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\View;
 
-class CategoryInfo extends Model
+class CategoryInfo extends View
 {
-    /**
-     * モデルと関連しているテーブル
-     *
-     * @var string
-     */
-    protected $table = 'categoryinfo';
+    protected $table = 'categorycontrol';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'recipe_id','categorycontrol_id','category_id','category_name'
-    ];
+    protected static function boot(){
+
+        parent::boot();
+
+        static::addGlobalScope('core', function (Builder $builder) {
+            $builder
+                ->select('categorycontrol.id as categorycontrol_id', 'categorys.id as category_id', 'categorys.category_name as category_name')
+                ->leftJoin('categorys', 'categorycontrol.category_id', 'categorys.id');
+        });
+    }
 }
