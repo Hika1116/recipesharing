@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import DetailArticle from './detail_article.vue';
-import PostFunctionImg from '../../img/post_function_img.jpg'
-import SearchFunctionImg from '../../img/search_function_img.jpg'
-import FavaritFunctionImg from '../../img/favarit_fanction_img.jpg'
+import DetailArticle from '../child/detail_article.vue';
+import PostFunctionImg from '../../../img/post_function_img.jpg'
+import SearchFunctionImg from '../../../img/search_function_img.jpg'
+import FavaritFunctionImg from '../../../img/favarit_fanction_img.jpg'
 
 export default {
     components: {

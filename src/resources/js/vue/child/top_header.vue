@@ -74,7 +74,7 @@
 </style>
 
 <script>
-import TopHeaderImg from '../../img/top_header_img.jpg';
+import TopHeaderImg from '../../../img/top_header_img.jpg';
 export default {
     data(){
         return {

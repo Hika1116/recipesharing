@@ -1,12 +1,11 @@
 require('./bootstrap');
 
 import Vue from 'vue'
-
-import RecipeCard from './vue/recipe-card';
+import RecipeListParent from './vue/parent/recipe_list_parent.vue';
 
 new Vue({
-    el: '#wrapper-recipe',
+    el: '#app',
     components: {
-        RecipeCard: RecipeCard,
+        RecipeListParent: RecipeListParent,
     },
-})
+});

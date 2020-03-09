@@ -4,10 +4,10 @@
             <img :src="cardImg" alt="card-img">
         </div>
         <div id='recipe-card-detail'>
-            <h3>{{recipe.title}}</h3>
+            <h3>{{title}}</h3>
             <hr>
             <div id='username-and-favaritcount'>
-                <p id="user-name">by <a href="#">{{recipe.user_info.name}}</a></p>
+                <p id="user-name">by <a href="#">{{userName}}</a></p>
                 <p id="favarit-count"><span>★</span>{{favaritCount}}</p>
             </div>
             <div id="category-tag-area">
@@ -16,7 +16,7 @@
                 </p>
             </div>
             <p id="recipe-context">
-                {{recipe.sentence}}
+                {{detailContext}}
             </p>
             <div id="mategial-area">
                 <p>材料: {{materials}}</p>
@@ -30,7 +30,15 @@
 
 <script>
 export default {
-    props:['recipe'],
+    props:{
+        title:String,
+        categoryList:Array,
+        userName:String,
+        userNum:Number,
+        favaritCount:Number,
+        materialList:Array,
+        detailCntext:String,
+    },
     data(){
         return {
             title:'レシピ1',
