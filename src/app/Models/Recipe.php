@@ -26,13 +26,18 @@ class Recipe extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function recipeProcess(){
-        return $this->hasMany(RecipePocesess::class);
+
+    public function categoryInfos() {
+        return $this->hasMany(CategoryInfo::class);
     }
-    public function categoryControl(){
-        return $this->hasMany(CategoryControl::class);
-    }
-    public function materialControl(){
-        return $this->hasMany(MaterialControl::class);
-    }
+
+    // public function recipeProcess(){
+    //     return $this->hasMany(RecipePocesess::class);
+    // }
+    // public function categoryControl(){
+    //     return $this->hasMany(CategoryControl::class);
+    // }
+    // public function materialControl(){
+    //     return $this->hasMany(MaterialControl::class);
+    // }
 }

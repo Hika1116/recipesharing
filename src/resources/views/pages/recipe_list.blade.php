@@ -7,10 +7,8 @@
   <script src="{{ mix('js/recipe_list.js') }}" defer></script>
      <div id='wrapper-recipe'>
       <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
-      @foreach($recipe_list as $recipe)
-        <recipe-card :recipe='{{ $recipe }}'>
-         </recipe-card>
-      @endforeach
+      {{$recipe_list}}
+      
      </div>
 
      <style>

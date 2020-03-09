@@ -20,4 +20,8 @@ class CategoryInfo extends View
                 ->leftJoin('categorys', 'categorycontrol.category_id', 'categorys.id');
         });
     }
+
+    public function recipe(){
+        return $this->belongsTo(Recipe::class);
+    }
 }
