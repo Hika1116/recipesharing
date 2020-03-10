@@ -1,44 +1,60 @@
 
 <template>
-<div id='wrapper-recipe'>
-    <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
-    <button v-on:click="clickButton">click</button>
-    <div v-for="recipe in recipedata" :key="recipe.recipe_info.id">
-        <recipe-card :title="hikaru"></recipe-card>
+<div id="container">
+    <div id="warapper_recipe_search">
+        <recipe-search-form></recipe-search-form>
+    </div>
+    <div id='wrapper-recipe'>
+        <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
+        <div v-for="recipe in recipe_card_list" :key="recipe.recipe_id">
+            <recipe-list 
+            :recipe-id="recipe.recipe_id"
+            :title="recipe.title" 
+            :sentence="recipe.sentence"
+            :user-name="recipe.user_name"
+            :user-id="recipe.user_id"
+            :category-list="recipe.category_list"
+            :material-list="recipe.material_list"
+            :favarit-count="recipe.favarit_num">
+            </recipe-list>
+        </div>
     </div>
 </div>
+
 </template>
 
 <script>
 import RecipeCard from '../child/recipe_card.vue';
+import RecipeSearchForm from '../child/recipe_search_form.vue';
 
 export default {
     data(){
         return {
-            recipedata : JSON.parse(this.recipeList),
+            recipe_card_list : JSON.parse(this.RecipeCardList),
         }
     },
     props:{
-        recipeList:String,
+        RecipeCardList:String,
     },
     components:{
-        RecipeCard:RecipeCard,
+        RecipeList:RecipeCard,
+        RecipeSearchForm:RecipeSearchForm,
     },
-    methods: {
-        clickButton : function(){
-            console.log(this.recipeList);
-        }
-    },
+
 }
 </script>
 
 <style>
+    #container {
+      display: flex;
+      margin: 50px auto;
+      width: 1000px;
+    }
     #wrapper-recipe {
       width: 800px;
-      margin: 30px auto;
       border: solid 2px #BCB5B5;
       box-shadow: 0 0 8px #BCB5B5;
-      border-radius: 12px;
+      border-radius: 13px;
     }
     #wrapper-recipe h2 {
       font-size: 1.5rem;

@@ -1,7 +1,7 @@
 <template>
     <div id="recipe-card">
         <div id="recipe-card-img">
-            <img :src="cardImg" alt="card-img">
+            <img :src="Image" alt="card-img">
         </div>
         <div id='recipe-card-detail'>
             <h3>{{title}}</h3>
@@ -16,10 +16,10 @@
                 </p>
             </div>
             <p id="recipe-context">
-                {{detailContext}}
+                {{sentence}}
             </p>
             <div id="mategial-area">
-                <p>材料: {{materials}}</p>
+                <p>材料: {{materialList}}</p>
             </div>
             <div id="favarit-botton-area">
                 <span id="favarit-star">★</span><a id="favarit-text" href="#">お気に入り</a>
@@ -29,28 +29,22 @@
 </template>
 
 <script>
+import Image from '../../../img/favarit_fanction_img.jpg';
+
 export default {
     props:{
+        recipeId:Number,
         title:String,
-        categoryList:Array,
+        sentence:String,
         userName:String,
-        userNum:Number,
+        userId:Number,
+        categoryList:Array,
+        materialList:String,
         favaritCount:Number,
-        materialList:Array,
-        detailCntext:String,
     },
     data(){
         return {
-            title:'レシピ1',
-            categoryList:[
-                '#夕飯',
-                '#あっさり',
-                '#肉料理',
-            ],
-            userName:'hikaru',
-            favaritCount:11,
-            materials:'人参、豚肉、ほうれん草、、、',
-            detailContext:'1番目のレシピになります。ここにはレシピの紹介文が表示されます。'
+            Image:Image,
         }
     }
 }
@@ -64,10 +58,26 @@ export default {
         border: solid 2px #BCB5B5;
         border-radius: 10px;
         margin: 20px auto;
-         box-shadow: 0 0 3px #BCB5B5;
+        box-shadow: 0 0 3px #BCB5B5;
     }
     #recipe-card-img {
         width: 300px;
+        position: relative;
+        margin-right:20px; 
+         border: 1px solid #BCB5B5;
+    }
+    #recipe-card-img img {
+        position: absolute;
+        margin: auto;
+        width:auto;
+        height:auto;
+        max-width:100%;
+        max-height:100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
     }
     #recipe-card-detail {
         width: 100%;
