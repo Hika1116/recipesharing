@@ -2,10 +2,13 @@
 <template>
 <div id="container">
     <div id="warapper_recipe_search">
-        <recipe-search-form></recipe-search-form>
+        <recipe-search-form
+            category-array="{{CategoryArray}}"
+            material-array="{{MaterialArray}}"></recipe-search-form>
     </div>
     <div id='wrapper-recipe'>
         <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
+        
         <div v-for="recipe in recipe_card_list" :key="recipe.recipe_id">
             <recipe-list 
             :recipe-id="recipe.recipe_id"
@@ -20,7 +23,6 @@
         </div>
     </div>
 </div>
-
 </template>
 
 <script>
@@ -34,7 +36,9 @@ export default {
         }
     },
     props:{
-        RecipeCardList:String,
+        recipeCardList:String,
+        categoryArray:String,
+        materialArray:String,
     },
     components:{
         RecipeList:RecipeCard,

@@ -6,17 +6,49 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Entitys\RecipeCardInfo;
+use App\Models\Category;
 
 class RecipeListController extends Controller
 {
     public function index(){
         $recipe_card_list = $this->createRecipeList();
-        return view('pages.recipe_list')->with('recipe_card_list', json_encode($recipe_card_list, JSON_PRETTY_PRINT));
+        $category_array = $this->getCategoryArrayData();
+        $material_array = $this->getMaterialArrayData();
+
+        return view('pages.recipe_list')->with(
+            ['recipe_card_list'=>json_encode($recipe_card_list, JSON_PRETTY_PRINT),
+            'category_array'=>json_encode($category_array, JSON_PRETTY_PRINT),
+            'material_array'=>json_encode($material_array, JSON_PRETTY_PRINT)]);
     }
 
     public function search(){
         $recipe_card_list = $this->createRecipeList();
         return view('pages.recipe_list')->with('recipe_card_list', json_encode($recipe_card_list, JSON_PRETTY_PRINT));
+    }
+
+    /**
+     * カテゴリーテーブルの主キーとカテゴリー名を配列で取得
+     * @return category_array
+     */
+    private function getCategoryArrayData(){
+        $category_list = Category::all();
+        $category_array = array();
+        foreach($category_list as $category){
+            $category_array[$category->id] = $category->category_name;
+        }
+        return $category_array;
+    }
+    /**
+     * 材料テーブルの主キーと材料名を配列で取得
+     * @return material
+     */
+    private function getMaterialArrayData(){
+        $material_list = Materials::all();
+        $material_array = array();
+        foreach($material_list as $material){
+            $material_array[$material->id] = $material->material_name;
+        }
+        return $material_array;
     }
 
     private function createRecipeList(){

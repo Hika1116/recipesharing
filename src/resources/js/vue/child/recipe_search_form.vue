@@ -3,15 +3,43 @@
         <h2>検索条件</h2>
         <form method="GET" action="/search">
             <input type="text" value="title" name="title">
-            <input type="text" value="categiry" name="category">
-            <input type="text" value="material" name="material">
+
+            <!-- 選択用モーダル -->
+            <button type="button" v-on:click="onClickIsModalShow">click</button>
+            <select-modal v-show="isModalShow" v-on:from-child="closeModal"></select-modal>
+
             <input type="submit" value="検索">
+
         </form>
+        
     </div>
 </template>
 
 <script>
+import SelectModal from './select_modal.vue';
+
 export default {
+    components:{
+        SelectModal:SelectModal,
+    },
+    props:{
+        CategoryArray:String,
+        MaterialArray:String,
+    },
+    data(){
+        return {
+            isModalShow:false,
+        }
+    },
+    methods:{
+        onClickIsModalShow:function(){
+            this.isModalShow = true;
+        },
+        closeModal: function(name){
+            //ここで子コンポーネントのイベント発火もわかる
+            this.isModalShow = false;
+        },
+    }
 }
 </script>
 
