@@ -1,4 +1,3 @@
-
 <template>
     <div id="select-modal">
         <div id="content">
@@ -7,7 +6,7 @@
             <div id="select-area">
                 <div class="choice-area">
                     <div class="input-text">
-                        <input type="text" placeholder="カテゴリー名を入力">
+                        <input type="text" placeholder="カテゴリー名を入力" v-model="selectText">
                     </div>
                     <div class="table-area">
                         <table>
@@ -39,68 +38,75 @@
                     </div>
                 </div>
             </div>
+            <div id="select-button-area">
+                <button type="button">SELECT</button>
+            </div>
         </div>
     </div>
 </template>
 
+
+<script>
+export default {
+    data(){
+        return {
+            choiceList:{},
+            selectedList:{},
+            selectText:''
+        }
+    },
+    created(){
+        this.choiceList = JSON.parse(this.dataArray);
+    },
+    props:{
+        title:String,
+        dataArray:String,
+    },
+    methods:{
+        clickClose:function(){
+            this.$emit('from-child', '親へ渡す引数');
+        },
+        pushData:function(key){
+            this.$set(this.selectedList, key, this.choiceList[key]);
+            delete this.choiceList[key];
+        },
+        pullData:function(key){
+            this.$set(this.choiceList, key, this.selectedList[key]);
+            delete this.selectedList[key];
+        }
+    },
+    watch: {
+        selectText:function(){
+            console.log(this.selectText);
+        }
+    },
+}
+</script>
+
 <style>
-    .choice-button-area {
+    #select-button-area {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+        height: 10%;
     }
-    .choice-button-area button {
-        margin-right: 20px;
-    }
-    .dummy-class {
-        height: 45px;
-    }
-    .choice-area, .selected-area {
-        width: 40%;
-        margin: 10px 30px;
-    }
-    .table-area {
-        width: 100%;
-        height: 300px;
-        border: solid 3px #eee;
-    }
-    .table-area table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin: 0;
-        width: 100%;
-    }
-    .table-area table tbody {
-        overflow-x: hidden;
-        overflow-y: scroll;
-        height: 250px;
-    }
-    .table-area table thead, tbody {
-        display: block;
-    }
-    .table-area table tr{
-        border-bottom: solid 1px #eee;
-        line-height: 50px;
-        cursor: pointer;
-        margin:0;
-        display: block;
-        width: 100%;
-    }
-    .table-area table th, td {
+    #select-button-area button {
+        display: inline-block;
+        width: 20%;
+        height: 100%;
         text-align: center;
-        display: block;
-        max-height: 80px;
-        width: 100%;
+        font-size: 14px;
+        color: #FFF;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 4px;
+        background-image: linear-gradient(-90deg, #EF866B, #F7D76B);
+        transition: .5s;
+        background-size: 200%;
     }
-    .table-area table th {
-        background-color: #EF866B;
-        color: white;
+    #select-button-area button:hover {
+        background-position: right center;
     }
-    
-    .table-area table tr:hover{
-        background-color: #d4f0fd;
-    }
-
-
+    #select-button-area button:focus { outline:0; }
 
     #select-modal {
         /*　要素を重ねた時の順番　*/
@@ -129,7 +135,89 @@
     }
     #content h3 {
         text-align: center;
+        margin: 10px 0;
     }
+    #select-area{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        height: 80%;
+    }
+    .choice-button-area {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .choice-button-area button {
+        margin-right: 20px;
+        height: 100%;
+    }
+    .dummy-class {
+        height: 45px;
+    }
+    .choice-area, .selected-area {
+        width: 40%;
+        margin: 10px 30px;
+        position: relative;
+    }
+    .table-area {
+        width: 100%;
+        border: solid 3px #eee;
+        height: 80%;
+    }
+    .table-area table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .table-area table thead, tbody {
+        display: block;
+    }
+    .table-area table tr{
+        border-bottom: solid 1px #eee;
+        line-height: 50px;
+        cursor: pointer;
+        margin:0;
+        display: block;
+        width: 100%;
+    }
+    .table-area table th, td {
+        text-align: center;
+        display: block;
+        max-height: 80px;
+        width: 100%;
+    }
+
+    
+    .table-area table tbody {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        display: block;
+        height: 80%;
+    }
+    .table-area table thead {
+        background-color: #EF866B;
+        color: white;
+        height: 20%;
+    }
+    .table-area table thead tr {
+        display: block;
+        cursor: default;
+        height: 100%;
+    }
+
+    
+    
+    .table-area table tbody tr:hover{
+        background-color: #d4f0fd;
+    }
+
+
+
+    
     #cancel-button {
         position: absolute;
         top: 10px;
@@ -170,41 +258,7 @@
     .input-text input[type=text]:focus {
         border-color: #da3c41;
     }
-    #select-area{
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-    }
+    
     
 </style>
 
-<script>
-export default {
-    data(){
-        return {
-            choiceList:{},
-            selectedList:{},
-        }
-    },
-    created(){
-        this.choiceList = JSON.parse(this.dataArray);
-    },
-    props:{
-        title:String,
-        dataArray:String,
-    },
-    methods:{
-        clickClose:function(){
-            this.$emit('from-child', '親へ渡す引数');
-        },
-        pushData:function(key){
-            this.$set(this.selectedList, key, this.choiceList[key]);
-            delete this.choiceList[key];
-        },
-        pullData:function(key){
-            this.$set(this.choiceList, key, this.selectedList[key]);
-            delete this.selectedList[key];
-        }
-    }
-}
-</script>

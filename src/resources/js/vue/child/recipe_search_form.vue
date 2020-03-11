@@ -1,14 +1,14 @@
 <template>
     <div id="recipe_search_form">
         <h2>検索条件</h2>
-        <form method="GET" action="/search">
+        <form method="GET" action="/search" onsubmit="return false;">
             <input type="text" value="title" name="title">
 
             <!-- 選択用モーダル -->
             <button type="button" v-on:click="onClickIsModalShow">click</button>
             <select-modal :title="modalTitle" :data-array="categoryArray" v-show="isModalShow" v-on:from-child="closeModal"></select-modal>
 
-            <input type="submit" value="検索">
+            <input type="button" value="検索" onclick=”submit();”>
         </form>
     </div>
 </template>
