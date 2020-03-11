@@ -6,12 +6,10 @@
 
             <!-- 選択用モーダル -->
             <button type="button" v-on:click="onClickIsModalShow">click</button>
-            <select-modal v-show="isModalShow" v-on:from-child="closeModal"></select-modal>
+            <select-modal :title="modalTitle" :data-array="categoryArray" v-show="isModalShow" v-on:from-child="closeModal"></select-modal>
 
             <input type="submit" value="検索">
-
         </form>
-        
     </div>
 </template>
 
@@ -23,12 +21,13 @@ export default {
         SelectModal:SelectModal,
     },
     props:{
-        CategoryArray:String,
-        MaterialArray:String,
+        categoryArray:String,
+        materialArray:String,
     },
     data(){
         return {
             isModalShow:false,
+            modalTitle:"カテゴリー",
         }
     },
     methods:{

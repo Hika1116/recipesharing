@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Entitys\RecipeCardInfo;
+use App\Entitys\SelectData;
 use App\Models\Category;
+use App\Models\Materials;
 
 class RecipeListController extends Controller
 {
@@ -18,7 +20,8 @@ class RecipeListController extends Controller
         return view('pages.recipe_list')->with(
             ['recipe_card_list'=>json_encode($recipe_card_list, JSON_PRETTY_PRINT),
             'category_array'=>json_encode($category_array, JSON_PRETTY_PRINT),
-            'material_array'=>json_encode($material_array, JSON_PRETTY_PRINT)]);
+            'material_array'=>json_encode($material_array, JSON_PRETTY_PRINT),
+            ]);
     }
 
     public function search(){
@@ -44,9 +47,12 @@ class RecipeListController extends Controller
      */
     private function getMaterialArrayData(){
         $material_list = Materials::all();
-        $material_array = array();
+        $material_array = [];
         foreach($material_list as $material){
-            $material_array[$material->id] = $material->material_name;
+            $select_data = new SelectData();
+            $select_data->data_id = $material->id;
+            $select_data->data_name = $material->material_name;
+            $material_array[] = $select_data;
         }
         return $material_array;
     }

@@ -3,8 +3,8 @@
 <div id="container">
     <div id="warapper_recipe_search">
         <recipe-search-form
-            category-array="{{CategoryArray}}"
-            material-array="{{MaterialArray}}"></recipe-search-form>
+            :category-array="categoryArray"
+            :material-array="materialArray"></recipe-search-form>
     </div>
     <div id='wrapper-recipe'>
         <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
@@ -32,7 +32,7 @@ import RecipeSearchForm from '../child/recipe_search_form.vue';
 export default {
     data(){
         return {
-            recipe_card_list : JSON.parse(this.RecipeCardList),
+            recipe_card_list : JSON.parse(this.recipeCardList),
         }
     },
     props:{

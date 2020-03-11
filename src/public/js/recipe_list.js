@@ -1986,20 +1986,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     SelectModal: _select_modal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    CategoryArray: String,
-    MaterialArray: String
+    categoryArray: String,
+    materialArray: String
   },
   data: function data() {
     return {
-      isModalShow: false
+      isModalShow: false,
+      modalTitle: "カテゴリー"
     };
   },
   methods: {
@@ -2050,14 +2049,185 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      choiceList: {},
+      selectedList: {}
+    };
+  },
+  created: function created() {
+    this.choiceList = JSON.parse(this.dataArray);
+  },
   props: {
     title: String,
-    choiceArray: Array
+    dataArray: String
   },
   methods: {
     clickClose: function clickClose() {
-      this.$emit('from-child', 'hikaru');
+      this.$emit('from-child', '親へ渡す引数');
+    },
+    pushData: function pushData(key) {
+      this.$set(this.selectedList, key, this.choiceList[key]);
+      delete this.choiceList[key];
+    },
+    pullData: function pullData(key) {
+      this.$set(this.choiceList, key, this.selectedList[key]);
+      delete this.selectedList[key];
     }
   }
 });
@@ -2107,7 +2277,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      recipe_card_list: JSON.parse(this.RecipeCardList)
+      recipe_card_list: JSON.parse(this.recipeCardList)
     };
   },
   props: {
@@ -2173,7 +2343,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#select-modal {\n    /*　要素を重ねた時の順番　*/\n    z-index:1;\n\n    /*　画面全体を覆う設定　*/\n    position:fixed;\n    top:0;\n    left:0;\n    width:100%;\n    height:100%;\n    background-color:rgba(0,0,0,0.5);\n\n    /*　画面の中央に要素を表示させる設定　*/\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#content{\n    z-index:2;\n    width:50%;\n    height: 50%;\n    padding: 1em;\n    background:#fff;\n}\n", ""]);
+exports.push([module.i, "\n.choice-button-area {\n    display: flex;\n    justify-content: flex-end;\n}\n.choice-button-area button {\n    margin-right: 20px;\n}\n.dummy-class {\n    height: 45px;\n}\n.choice-area, .selected-area {\n    width: 40%;\n    margin: 10px 30px;\n}\n.table-area {\n    width: 100%;\n    height: 300px;\n    border: solid 3px #eee;\n}\n.table-area table {\n    border-collapse: collapse;\n    border-spacing: 0;\n    margin: 0;\n    width: 100%;\n}\n.table-area table tbody {\n    overflow-x: hidden;\n    overflow-y: scroll;\n    height: 250px;\n}\n.table-area table thead, tbody {\n    display: block;\n}\n.table-area table tr{\n    border-bottom: solid 1px #eee;\n    line-height: 50px;\n    cursor: pointer;\n    margin:0;\n    display: block;\n    width: 100%;\n}\n.table-area table th, td {\n    text-align: center;\n    display: block;\n    max-height: 80px;\n    width: 100%;\n}\n.table-area table th {\n    background-color: #EF866B;\n    color: white;\n}\n.table-area table tr:hover{\n    background-color: #d4f0fd;\n}\n#select-modal {\n    /*　要素を重ねた時の順番　*/\n    z-index:1;\n\n    /*　画面全体を覆う設定　*/\n    position:fixed;\n    top:0;\n    left:0;\n    width:100%;\n    height:100%;\n    background-color:rgba(0,0,0,0.5);\n\n    /*　画面の中央に要素を表示させる設定　*/\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#content{\n    z-index:2;\n    width:50%;\n    height: 50%;\n    padding: 1em;\n    background:#fff;\n    position: relative;\n}\n#content h3 {\n    text-align: center;\n}\n#cancel-button {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    width: 30px;\n    height: 30px;\n    font-size: 1rem;\n\n    display: inline-block;\n    text-decoration: none;\n    background: #BCB5B5;\n    color: #FFF;\n    border-radius: 50%;\n    text-align: center;\n    overflow: hidden;\n    transition: .4s;\n}\n#cancel-button:hover {\n    background: rgb(245, 242, 242);\n}\n.input-text {\n    width: 100%;\n    height: 35px;\n    margin: 5px 3px;\n}\n.input-text input[type=text] {\n    box-sizing: border-box;\n    line-height: 35px;\n    font-size: 15pt;\n    width: 100%;\n    height: 100%;\n    margin: 3px 0;\n    transition: 0.3s;\n    border: 3px solid #F7B46B;\n    border-radius: 4px;\n    outline: none;\n}\n.input-text input[type=text]:focus {\n    border-color: #da3c41;\n}\n#select-area{\n    display: flex;\n    justify-content: center;\n    margin: 0 auto;\n}\n\n", ""]);
 
 // exports
 
@@ -20619,6 +20789,7 @@ var render = function() {
               expression: "isModalShow"
             }
           ],
+          attrs: { title: _vm.modalTitle, "data-array": _vm.categoryArray },
           on: { "from-child": _vm.closeModal }
         }),
         _vm._v(" "),
@@ -20654,18 +20825,75 @@ var render = function() {
     _c("div", { attrs: { id: "content" } }, [
       _c("h3", [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "button",
+        {
+          attrs: { id: "cancel-button", type: "button" },
+          on: { click: _vm.clickClose }
+        },
+        [_vm._v("×")]
+      ),
       _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _c("p", [
-        _c(
-          "button",
-          { attrs: { type: "button" }, on: { click: _vm.clickClose } },
-          [_vm._v("close")]
-        )
+      _c("div", { attrs: { id: "select-area" } }, [
+        _c("div", { staticClass: "choice-area" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-area" }, [
+            _c("table", [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.choiceList, function(value, key) {
+                  return _c("tr", { key: key }, [
+                    _c(
+                      "td",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.pushData(key)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(value))]
+                    )
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "selected-area" }, [
+          _c("div", { staticClass: "dummy-class" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-area" }, [
+            _c("table", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.selectedList, function(value, key) {
+                  return _c("tr", { key: key }, [
+                    _c(
+                      "td",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.pullData(key)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(value))]
+                    )
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -20675,33 +20903,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "input-text-area" } }, [
-      _c("input", { attrs: { id: "input-text", type: "text" } })
+    return _c("div", { staticClass: "input-text" }, [
+      _c("input", {
+        attrs: { type: "text", placeholder: "カテゴリー名を入力" }
+      })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "choice-area" } }, [
-      _c("table", [
-        _c("tr", [_vm._v("お昼")]),
-        _vm._v(" "),
-        _c("tr", [_vm._v("朝ごはん")])
-      ])
-    ])
+    return _c("thead", [_c("tr", [_c("th", [_vm._v("カテゴリー")])])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "selected-area" } }, [
-      _c("table", [
-        _c("tr", [_vm._v("にんじん")]),
-        _vm._v(" "),
-        _c("tr", [_vm._v("玉ねぎ")])
-      ])
-    ])
+    return _c("thead", [_c("tr", [_c("th", [_vm._v("選択済")])])])
   }
 ]
 render._withStripped = true
@@ -20721,8 +20939,69 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "container" } }, [
+    _c(
+      "div",
+      { attrs: { id: "warapper_recipe_search" } },
+      [
+        _c("recipe-search-form", {
+          attrs: {
+            "category-array": _vm.categoryArray,
+            "material-array": _vm.materialArray
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { id: "wrapper-recipe" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.recipe_card_list, function(recipe) {
+          return _c(
+            "div",
+            { key: recipe.recipe_id },
+            [
+              _c("recipe-list", {
+                attrs: {
+                  "recipe-id": recipe.recipe_id,
+                  title: recipe.title,
+                  sentence: recipe.sentence,
+                  "user-name": recipe.user_name,
+                  "user-id": recipe.user_id,
+                  "category-list": recipe.category_list,
+                  "material-list": recipe.material_list,
+                  "favarit-count": recipe.favarit_num
+                }
+              })
+            ],
+            1
+          )
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", [
+      _vm._v("レシピ一覧 "),
+      _c("i", { staticClass: "fas fa-list-alt" })
+    ])
+  }
+]
+render._withStripped = true
 
 
 
@@ -33131,14 +33410,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/vue/child/select_modal.vue ***!
   \*************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _select_modal_vue_vue_type_template_id_8b83c838___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./select_modal.vue?vue&type=template&id=8b83c838& */ "./resources/js/vue/child/select_modal.vue?vue&type=template&id=8b83c838&");
 /* harmony import */ var _select_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./select_modal.vue?vue&type=script&lang=js& */ "./resources/js/vue/child/select_modal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _select_modal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./select_modal.vue?vue&type=style&index=0&lang=css& */ "./resources/js/vue/child/select_modal.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _select_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _select_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _select_modal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./select_modal.vue?vue&type=style&index=0&lang=css& */ "./resources/js/vue/child/select_modal.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -33170,7 +33450,7 @@ component.options.__file = "resources/js/vue/child/select_modal.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/vue/child/select_modal.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
