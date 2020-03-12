@@ -15,7 +15,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(element,index) in extractionSortData" :key="element.id">
-                                    <td v-on:click="pushData(element.id)">{{element.data}}{{element.id}}{{index}}</td>
+                                    <td v-on:click="pushData(element.id)">{{element.data}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(element,index) in selectSortData" :key="element.id">
-                                    <td v-on:click="pullData(element.id)">{{element.data}}{{element.id}}{{index}}</td>
+                                    <td v-on:click="pullData(element.id)">{{element.data}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div id="select-button-area">
-                <button type="button">SELECT</button>
+                <button type="button" v-on:click="clickChoiceItem">SELECT</button>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@ export default {
     },
     methods:{
         clickClose:function(){
-            this.$emit('from-child', '親へ渡す引数');
+            this.$emit('from-child');
         },
         pushData:function(id){
             var select = this.selectedList;
@@ -87,6 +87,9 @@ export default {
             this.selectedList = this.selectedList.filter(function(value){
                 return value.id !== id;
             });
+        },
+        clickChoiceItem:function(){
+            this.$emit('from-child-in-select-item',this.selectedList);
         }
     },
     computed:{
