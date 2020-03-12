@@ -14,8 +14,8 @@
                                 <tr><th>カテゴリー</th></tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(value, key) in choiceList" :key="key">
-                                    <td v-on:click="pushData(key)">{{value}}</td>
+                                <tr v-for="(element,index) in extractionSortData" :key="element.id">
+                                    <td v-on:click="pushData(element.id)">{{element.data}}{{element.id}}{{index}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -30,8 +30,8 @@
                                 <tr><th>選択済</th></tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(value, key) in selectedList" :key="key">
-                                    <td v-on:click="pullData(key)">{{value}}</td>
+                                <tr v-for="(element,index) in selectSortData" :key="element.id">
+                                    <td v-on:click="pullData(element.id)">{{element.data}}{{element.id}}{{index}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -50,13 +50,13 @@
 export default {
     data(){
         return {
-            choiceList:{},
-            selectedList:{},
+            choiceList:[],
+            selectedList:[],
             selectText:''
         }
     },
     created(){
-        this.choiceList = JSON.parse(this.dataArray);
+        this.choiceList = JSON.parse(this.dataArray);;
     },
     props:{
         title:String,
@@ -66,18 +66,45 @@ export default {
         clickClose:function(){
             this.$emit('from-child', '親へ渡す引数');
         },
-        pushData:function(key){
-            this.$set(this.selectedList, key, this.choiceList[key]);
-            delete this.choiceList[key];
+        pushData:function(id){
+            var select = this.selectedList;
+            this.choiceList.forEach(function(value){
+                if(value.id === id){
+                    select.push(value);
+                }
+            });
+            this.choiceList = this.choiceList.filter(function(value){
+                return value.id !== id;
+            });
         },
-        pullData:function(key){
-            this.$set(this.choiceList, key, this.selectedList[key]);
-            delete this.selectedList[key];
+        pullData:function(id){
+            var choice = this.choiceList;
+            this.selectedList.forEach(function(value){
+                if(value.id === id){
+                    choice.push(value);
+                }
+            });
+            this.selectedList = this.selectedList.filter(function(value){
+                return value.id !== id;
+            });
         }
     },
-    watch: {
-        selectText:function(){
-            console.log(this.selectText);
+    computed:{
+        extractionSortData(){
+            var text = this.selectText;
+            var re = new RegExp(this.selectText);
+            var extractiondata = this.choiceList.filter(function(value){
+                return re.test(value.data);
+            });
+
+            return extractiondata.sort((a,b)=>{
+                return a.id - b.id;
+            });
+        },
+        selectSortData(){
+            return this.selectedList.sort((a,b)=>{
+                return a.id - b.id;
+            });
         }
     },
 }

@@ -35,10 +35,17 @@ class RecipeListController extends Controller
      */
     private function getCategoryArrayData(){
         $category_list = Category::all();
-        $category_array = array();
+        $category_array = [];
         foreach($category_list as $category){
-            $category_array[$category->id] = $category->category_name;
+            $select_data = new SelectData();
+            $select_data->id = $category->id;
+            $select_data->data = $category->category_name;
+            $category_array[] = $select_data;
         }
+        // $category_array = array();
+        // foreach($category_list as $category){
+        //     $category_array[$category->id] = $category->category_name;
+        // }
         return $category_array;
     }
     /**
@@ -50,8 +57,8 @@ class RecipeListController extends Controller
         $material_array = [];
         foreach($material_list as $material){
             $select_data = new SelectData();
-            $select_data->data_id = $material->id;
-            $select_data->data_name = $material->material_name;
+            $select_data->id = $material->id;
+            $select_data->data = $material->material_name;
             $material_array[] = $select_data;
         }
         return $material_array;

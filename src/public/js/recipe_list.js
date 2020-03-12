@@ -2074,13 +2074,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      choiceList: {},
-      selectedList: {},
+      choiceList: [],
+      selectedList: [],
       selectText: ''
     };
   },
   created: function created() {
     this.choiceList = JSON.parse(this.dataArray);
+    ;
   },
   props: {
     title: String,
@@ -2090,18 +2091,44 @@ __webpack_require__.r(__webpack_exports__);
     clickClose: function clickClose() {
       this.$emit('from-child', '親へ渡す引数');
     },
-    pushData: function pushData(key) {
-      this.$set(this.selectedList, key, this.choiceList[key]);
-      delete this.choiceList[key];
+    pushData: function pushData(id) {
+      var select = this.selectedList;
+      this.choiceList.forEach(function (value) {
+        if (value.id === id) {
+          select.push(value);
+        }
+      });
+      this.choiceList = this.choiceList.filter(function (value) {
+        return value.id !== id;
+      });
     },
-    pullData: function pullData(key) {
-      this.$set(this.choiceList, key, this.selectedList[key]);
-      delete this.selectedList[key];
+    pullData: function pullData(id) {
+      var choice = this.choiceList;
+      this.selectedList.forEach(function (value) {
+        if (value.id === id) {
+          choice.push(value);
+        }
+      });
+      this.selectedList = this.selectedList.filter(function (value) {
+        return value.id !== id;
+      });
     }
   },
-  watch: {
-    selectText: function selectText() {
-      console.log(this.selectText);
+  computed: {
+    extractionSortData: function extractionSortData() {
+      var text = this.selectText;
+      var re = new RegExp(this.selectText);
+      var extractiondata = this.choiceList.filter(function (value) {
+        return re.test(value.data);
+      });
+      return extractiondata.sort(function (a, b) {
+        return a.id - b.id;
+      });
+    },
+    selectSortData: function selectSortData() {
+      return this.selectedList.sort(function (a, b) {
+        return a.id - b.id;
+      });
     }
   }
 });
@@ -20743,18 +20770,24 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.choiceList, function(value, key) {
-                  return _c("tr", { key: key }, [
+                _vm._l(_vm.extractionSortData, function(element, index) {
+                  return _c("tr", { key: element.id }, [
                     _c(
                       "td",
                       {
                         on: {
                           click: function($event) {
-                            return _vm.pushData(key)
+                            return _vm.pushData(element.id)
                           }
                         }
                       },
-                      [_vm._v(_vm._s(value))]
+                      [
+                        _vm._v(
+                          _vm._s(element.data) +
+                            _vm._s(element.id) +
+                            _vm._s(index)
+                        )
+                      ]
                     )
                   ])
                 }),
@@ -20773,18 +20806,24 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.selectedList, function(value, key) {
-                  return _c("tr", { key: key }, [
+                _vm._l(_vm.selectSortData, function(element, index) {
+                  return _c("tr", { key: element.id }, [
                     _c(
                       "td",
                       {
                         on: {
                           click: function($event) {
-                            return _vm.pullData(key)
+                            return _vm.pullData(element.id)
                           }
                         }
                       },
-                      [_vm._v(_vm._s(value))]
+                      [
+                        _vm._v(
+                          _vm._s(element.data) +
+                            _vm._s(element.id) +
+                            _vm._s(index)
+                        )
+                      ]
                     )
                   ])
                 }),
