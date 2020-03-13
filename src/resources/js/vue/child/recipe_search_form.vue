@@ -4,7 +4,7 @@
         <form method="GET" action="/search" onsubmit="return false;">
             <div class="select-title-area">
                 <p>タイトル</p>
-                <input type="text" value="title" name="title">
+                <input type="text" value="" name="title" placeholder="タイトルを入力">
             </div>
 
             <div class="select-area">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="selected-item">
-                    <p>select Item</p>
+                    <p v-for="element in categorySelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
             
@@ -27,11 +27,12 @@
                     </div>
                 </div>
                 <div class="selected-item">
-                    <p>select Item</p>
+                    <p v-for="element in materialSelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
-            
-            <input type="button" value="検索" onclick=”submit();”>
+            <div id="submit-button-area">
+                <button type="button" onclick=”submit();”>検索</button>
+            </div>
         </form>
 
         <!-- 選択用モーダル -->
@@ -69,7 +70,8 @@ export default {
             isMateriakModalShow:false,
             modalCategoryTitle:"カテゴリー",
             modalMaterialTitle:'材料',
-
+            categorySelectedItemList:[],
+            materialSelectedItemList:[],
         }
     },
     methods:{
@@ -86,20 +88,53 @@ export default {
         },
         getCategorySelectItem:function(resultArray){
             this.isCategoryModalShow = false;
-            console.log(resultArray);
+            this.categorySelectedItemList = resultArray;
         },
         getMaterialSelectItem:function(resultArray){
             this.isMateriakModalShow = false;
-            console.log(resultArray);
+            this.materialSelectedItemList = resultArray;
         }
     }
 }
 </script>
 
 <style>
+
+#submit-button-area {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    margin: 20px 0;
+}
+
+#submit-button-area button {
+    display: block;
+	position: relative;
+    border-radius: 10px;
+	width: 65%;
+    max-width: 300px;
+	text-align: center;
+	text-decoration: none;
+    font-size: 1rem;
+	color:white;
+	background: #F7B46B;
+    margin: 0;
+    padding: 2px 10px;
+    height: 100%;
+    max-height: 40px;
+}
+#submit-button-area button:hover {
+    opacity:0.8;
+	cursor: pointer;
+	text-decoration: none;
+}
+#submit-button-area button:focus{
+    outline:0;
+}
 #recipe_search_form {
     width: 250px;
-    height: 50%;
+    height: auto;
+    max-height: 50%;
     box-shadow: 0 0 3px #BCB5B5;
     margin: 0 20px;
     border-radius: 13px;
@@ -118,16 +153,21 @@ export default {
 }
 #recipe_search_form form {
     height: 85%;
+    /* height: auto; */
+    /* max-height: 85%; */
 }
 
 form p {
     margin: 3px 3px;
     color: #BCB5B5;
     width: 50%;
+    font-size: 1rem;
+    font-weight: bold;
 }
 .select-title-area {
     height: 20%;
     max-height: 60px;
+    margin: 20px 0;
 }
 .select-title-area input[type='text']{
     margin: 3px 3px;
@@ -139,10 +179,12 @@ form p {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    font-size: 1rem;
+    color: #BCB5B5;
 }
 .select-area {
     margin: 15px 0;
-    height: 35%;
+    height: 25%;
 }
 .select-item-header {
     display: flex;
@@ -158,6 +200,7 @@ form p {
 	color:white;
 	background: #BCB5B5;
     margin-right: 20px;
+    font-size: .8rem;
 }
 .select-item-header .button-area button:hover {
     opacity:0.8;
@@ -177,7 +220,26 @@ form p {
     margin: 3px 3px;
     width: 90%;
     max-width: 500px;
-    height: 70%;
-    max-height: 300px;
+    height: 40%;
+    min-height: 70px;
+    max-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 3px;
+
+    overflow-y: scroll;
+}
+.selected-item p {
+    display: block;
+    border-radius: 10px;
+	color:white;
+	background: #EF866B;
+    font-size: .8;
+    width: auto;
+    text-align: center;
+    height: 25px;
+    padding: 1px 5px;
+    margin: 1px;
+    font-weight: normal;
 }
 </style>

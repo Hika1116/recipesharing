@@ -14,7 +14,7 @@
                                 <tr><th>カテゴリー</th></tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(element,index) in extractionSortData" :key="element.id">
+                                <tr v-for="(element) in extractionSortData" :key="element.id">
                                     <td v-on:click="pushData(element.id)">{{element.data}}</td>
                                 </tr>
                             </tbody>
@@ -30,7 +30,7 @@
                                 <tr><th>選択済</th></tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(element,index) in selectSortData" :key="element.id">
+                                <tr v-for="(element) in selectSortData" :key="element.id">
                                     <td v-on:click="pullData(element.id)">{{element.data}}</td>
                                 </tr>
                             </tbody>
@@ -56,7 +56,7 @@ export default {
         }
     },
     created(){
-        this.choiceList = JSON.parse(this.dataArray);;
+        this.choiceList = JSON.parse(this.dataArray);
     },
     props:{
         title:String,
@@ -64,6 +64,10 @@ export default {
     },
     methods:{
         clickClose:function(){
+            // リストの初期化
+            this.choiceList = JSON.parse(this.dataArray);
+            this.selectedList = [];
+            
             this.$emit('from-child');
         },
         pushData:function(id){

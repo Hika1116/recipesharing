@@ -2025,6 +2025,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2039,7 +2040,9 @@ __webpack_require__.r(__webpack_exports__);
       isCategoryModalShow: false,
       isMateriakModalShow: false,
       modalCategoryTitle: "カテゴリー",
-      modalMaterialTitle: '材料'
+      modalMaterialTitle: '材料',
+      categorySelectedItemList: [],
+      materialSelectedItemList: []
     };
   },
   methods: {
@@ -2056,11 +2059,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     getCategorySelectItem: function getCategorySelectItem(resultArray) {
       this.isCategoryModalShow = false;
-      console.log(resultArray);
+      this.categorySelectedItemList = resultArray;
     },
     getMaterialSelectItem: function getMaterialSelectItem(resultArray) {
       this.isMateriakModalShow = false;
-      console.log(resultArray);
+      this.materialSelectedItemList = resultArray;
     }
   }
 });
@@ -2134,7 +2137,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.choiceList = JSON.parse(this.dataArray);
-    ;
   },
   props: {
     title: String,
@@ -2142,6 +2144,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     clickClose: function clickClose() {
+      // リストの初期化
+      this.choiceList = JSON.parse(this.dataArray);
+      this.selectedList = [];
       this.$emit('from-child');
     },
     pushData: function pushData(id) {
@@ -2281,7 +2286,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#recipe_search_form {\n    width: 250px;\n    height: 50%;\n    box-shadow: 0 0 3px #BCB5B5;\n    margin: 0 20px;\n    border-radius: 13px;\n    border: solid 2px #BCB5B5;\n}\n#recipe_search_form h2 {\n    font-size: 1.5rem;\n      color: white;\n      margin-left: 20px;\n      font-weight: bold;\n      background-color: #F7B46B;\n      margin: 0;\n      padding: 15px;\n      border-radius: 10px 10px 0 0;\n}\n#recipe_search_form form {\n    height: 85%;\n}\nform p {\n    margin: 3px 3px;\n    color: #BCB5B5;\n    width: 50%;\n}\n.select-title-area {\n    height: 20%;\n    max-height: 60px;\n}\n.select-title-area input[type='text']{\n    margin: 3px 3px;\n    width: 80%;\n    max-width: 300px;\n    padding: 5px;\n    border-radius: 5px;\n    border: 1px solid #BCB5B5;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n}\n.select-area {\n    margin: 15px 0;\n    height: 35%;\n}\n.select-item-header {\n    display: flex;\n    position: relative;\n}\n.select-item-header .button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 50px;\n\ttext-align: center;\n\ttext-decoration: none;\n\tcolor:white;\n\tbackground: #BCB5B5;\n    margin-right: 20px;\n}\n.select-item-header .button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n.select-item-header .button-area button:focus{\n    outline:0;\n}\n.button-area {\n    display: flex;\n    justify-content: flex-end;\n    width: 50%;\n}\n.selected-item {\n    border: 1px solid #BCB5B5;\n    margin: 3px 3px;\n    width: 90%;\n    max-width: 500px;\n    height: 70%;\n    max-height: 300px;\n}\n", ""]);
+exports.push([module.i, "\n#submit-button-area {\n    display: flex;\n    justify-content: center;\n    height: 10%;\n    margin: 20px 0;\n}\n#submit-button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 65%;\n    max-width: 300px;\n\ttext-align: center;\n\ttext-decoration: none;\n    font-size: 1rem;\n\tcolor:white;\n\tbackground: #F7B46B;\n    margin: 0;\n    padding: 2px 10px;\n    height: 100%;\n    max-height: 40px;\n}\n#submit-button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n#submit-button-area button:focus{\n    outline:0;\n}\n#recipe_search_form {\n    width: 250px;\n    height: auto;\n    max-height: 50%;\n    box-shadow: 0 0 3px #BCB5B5;\n    margin: 0 20px;\n    border-radius: 13px;\n    border: solid 2px #BCB5B5;\n}\n#recipe_search_form h2 {\n    font-size: 1.5rem;\n      color: white;\n      margin-left: 20px;\n      font-weight: bold;\n      background-color: #F7B46B;\n      margin: 0;\n      padding: 15px;\n      border-radius: 10px 10px 0 0;\n}\n#recipe_search_form form {\n    height: 85%;\n    /* height: auto; */\n    /* max-height: 85%; */\n}\nform p {\n    margin: 3px 3px;\n    color: #BCB5B5;\n    width: 50%;\n    font-size: 1rem;\n    font-weight: bold;\n}\n.select-title-area {\n    height: 20%;\n    max-height: 60px;\n    margin: 20px 0;\n}\n.select-title-area input[type='text']{\n    margin: 3px 3px;\n    width: 80%;\n    max-width: 300px;\n    padding: 5px;\n    border-radius: 5px;\n    border: 1px solid #BCB5B5;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    font-size: 1rem;\n    color: #BCB5B5;\n}\n.select-area {\n    margin: 15px 0;\n    height: 25%;\n}\n.select-item-header {\n    display: flex;\n    position: relative;\n}\n.select-item-header .button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 50px;\n\ttext-align: center;\n\ttext-decoration: none;\n\tcolor:white;\n\tbackground: #BCB5B5;\n    margin-right: 20px;\n    font-size: .8rem;\n}\n.select-item-header .button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n.select-item-header .button-area button:focus{\n    outline:0;\n}\n.button-area {\n    display: flex;\n    justify-content: flex-end;\n    width: 50%;\n}\n.selected-item {\n    border: 1px solid #BCB5B5;\n    margin: 3px 3px;\n    width: 90%;\n    max-width: 500px;\n    height: 40%;\n    min-height: 70px;\n    max-height: 100px;\n    display: flex;\n    flex-wrap: wrap;\n    padding: 5px 3px;\n\n    overflow-y: scroll;\n}\n.selected-item p {\n    display: block;\n    border-radius: 10px;\n\tcolor:white;\n\tbackground: #EF866B;\n    font-size: .8;\n    width: auto;\n    text-align: center;\n    height: 25px;\n    padding: 1px 5px;\n    margin: 1px;\n    font-weight: normal;\n}\n", ""]);
 
 // exports
 
@@ -20752,7 +20757,16 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c(
+              "div",
+              { staticClass: "selected-item" },
+              _vm._l(_vm.categorySelectedItemList, function(element) {
+                return _c("p", { key: element.id }, [
+                  _vm._v(_vm._s(element.data))
+                ])
+              }),
+              0
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "select-area" }, [
@@ -20771,12 +20785,19 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2)
+            _c(
+              "div",
+              { staticClass: "selected-item" },
+              _vm._l(_vm.materialSelectedItemList, function(element) {
+                return _c("p", { key: element.id }, [
+                  _vm._v(_vm._s(element.data))
+                ])
+              }),
+              0
+            )
           ]),
           _vm._v(" "),
-          _c("input", {
-            attrs: { type: "button", value: "検索", onclick: "”submit();”" }
-          })
+          _vm._m(1)
         ]
       ),
       _vm._v(" "),
@@ -20829,23 +20850,24 @@ var staticRenderFns = [
     return _c("div", { staticClass: "select-title-area" }, [
       _c("p", [_vm._v("タイトル")]),
       _vm._v(" "),
-      _c("input", { attrs: { type: "text", value: "title", name: "title" } })
+      _c("input", {
+        attrs: {
+          type: "text",
+          value: "",
+          name: "title",
+          placeholder: "タイトルを入力"
+        }
+      })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "selected-item" }, [
-      _c("p", [_vm._v("select Item")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "selected-item" }, [
-      _c("p", [_vm._v("select Item")])
+    return _c("div", { attrs: { id: "submit-button-area" } }, [
+      _c("button", { attrs: { type: "button", onclick: "”submit();”" } }, [
+        _vm._v("検索")
+      ])
     ])
   }
 ]
@@ -20914,7 +20936,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.extractionSortData, function(element, index) {
+                _vm._l(_vm.extractionSortData, function(element) {
                   return _c("tr", { key: element.id }, [
                     _c(
                       "td",
@@ -20944,7 +20966,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.selectSortData, function(element, index) {
+                _vm._l(_vm.selectSortData, function(element) {
                   return _c("tr", { key: element.id }, [
                     _c(
                       "td",
