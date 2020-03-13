@@ -2042,8 +2042,33 @@ __webpack_require__.r(__webpack_exports__);
       modalCategoryTitle: "カテゴリー",
       modalMaterialTitle: '材料',
       categorySelectedItemList: [],
-      materialSelectedItemList: []
+      materialSelectedItemList: [],
+      selectTitle: function selectTitle() {
+        return "選択";
+      }
     };
+  },
+  computed: {
+    categorySelectText: function categorySelectText() {
+      if (this.categorySelectedItemList.length > 0) {
+        return "選択";
+      }
+
+      return "未選択";
+    },
+    materialSelectText: function materialSelectText() {
+      if (this.materialSelectedItemList.length > 0) {
+        return "選択";
+      }
+
+      return "未選択";
+    },
+    isSelectedCategoryItem: function isSelectedCategoryItem() {
+      return this.categorySelectedItemList.length > 0;
+    },
+    isSelectedMaterialItem: function isSelectedMaterialItem() {
+      return this.materialSelectedItemList.length > 0;
+    }
   },
   methods: {
     onClickIsCategoryModalShow: function onClickIsCategoryModalShow() {
@@ -2286,7 +2311,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#submit-button-area {\n    display: flex;\n    justify-content: center;\n    height: 10%;\n    margin: 20px 0;\n}\n#submit-button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 65%;\n    max-width: 300px;\n\ttext-align: center;\n\ttext-decoration: none;\n    font-size: 1rem;\n\tcolor:white;\n\tbackground: #F7B46B;\n    margin: 0;\n    padding: 2px 10px;\n    height: 100%;\n    max-height: 40px;\n}\n#submit-button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n#submit-button-area button:focus{\n    outline:0;\n}\n#recipe_search_form {\n    width: 250px;\n    height: auto;\n    max-height: 50%;\n    box-shadow: 0 0 3px #BCB5B5;\n    margin: 0 20px;\n    border-radius: 13px;\n    border: solid 2px #BCB5B5;\n}\n#recipe_search_form h2 {\n    font-size: 1.5rem;\n      color: white;\n      margin-left: 20px;\n      font-weight: bold;\n      background-color: #F7B46B;\n      margin: 0;\n      padding: 15px;\n      border-radius: 10px 10px 0 0;\n}\n#recipe_search_form form {\n    height: 85%;\n    /* height: auto; */\n    /* max-height: 85%; */\n}\nform p {\n    margin: 3px 3px;\n    color: #BCB5B5;\n    width: 50%;\n    font-size: 1rem;\n    font-weight: bold;\n}\n.select-title-area {\n    height: 20%;\n    max-height: 60px;\n    margin: 20px 0;\n}\n.select-title-area input[type='text']{\n    margin: 3px 3px;\n    width: 80%;\n    max-width: 300px;\n    padding: 5px;\n    border-radius: 5px;\n    border: 1px solid #BCB5B5;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    font-size: 1rem;\n    color: #BCB5B5;\n}\n.select-area {\n    margin: 15px 0;\n    height: 25%;\n}\n.select-item-header {\n    display: flex;\n    position: relative;\n}\n.select-item-header .button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 50px;\n\ttext-align: center;\n\ttext-decoration: none;\n\tcolor:white;\n\tbackground: #BCB5B5;\n    margin-right: 20px;\n    font-size: .8rem;\n}\n.select-item-header .button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n.select-item-header .button-area button:focus{\n    outline:0;\n}\n.button-area {\n    display: flex;\n    justify-content: flex-end;\n    width: 50%;\n}\n.selected-item {\n    border: 1px solid #BCB5B5;\n    margin: 3px 3px;\n    width: 90%;\n    max-width: 500px;\n    height: 40%;\n    min-height: 70px;\n    max-height: 100px;\n    display: flex;\n    flex-wrap: wrap;\n    padding: 5px 3px;\n\n    overflow-y: scroll;\n}\n.selected-item p {\n    display: block;\n    border-radius: 10px;\n\tcolor:white;\n\tbackground: #EF866B;\n    font-size: .8;\n    width: auto;\n    text-align: center;\n    height: 25px;\n    padding: 1px 5px;\n    margin: 1px;\n    font-weight: normal;\n}\n", ""]);
+exports.push([module.i, "\n.select-item-header p span {\n    background-color: #F7B46B;\n    border-radius: 50%;\n    font-size: 12pt;\n    color: white;\n    padding: 3pt;\n}\n#submit-button-area {\n    display: flex;\n    justify-content: center;\n    height: 10%;\n    margin: 20px 0;\n}\n#submit-button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: 65%;\n    max-width: 300px;\n\ttext-align: center;\n\ttext-decoration: none;\n    font-size: 1rem;\n\tcolor:white;\n\tbackground: #F7B46B;\n    margin: 0;\n    padding: 2px 10px;\n    height: 100%;\n    max-height: 40px;\n}\n#submit-button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n#submit-button-area button:focus{\n    outline:0;\n}\n#recipe_search_form {\n    width: 250px;\n    height: auto;\n    max-height: 50%;\n    box-shadow: 0 0 3px #BCB5B5;\n    margin: 0 20px;\n    border-radius: 13px;\n    border: solid 2px #BCB5B5;\n}\n#recipe_search_form h2 {\n    font-size: 1.5rem;\n      color: white;\n      margin-left: 20px;\n      font-weight: bold;\n      background-color: #F7B46B;\n      margin: 0;\n      padding: 15px;\n      border-radius: 10px 10px 0 0;\n}\n#recipe_search_form form {\n    height: 85%;\n    /* height: auto; */\n    /* max-height: 85%; */\n}\nform p {\n    margin: 3px 3px;\n    color: #BCB5B5;\n    width: 50%;\n    font-size: 1rem;\n    font-weight: bold;\n}\n.select-title-area {\n    height: 20%;\n    max-height: 60px;\n    margin: 20px 0;\n}\n.select-title-area input[type='text']{\n    margin: 3px 3px;\n    width: 80%;\n    max-width: 300px;\n    padding: 5px;\n    border-radius: 5px;\n    border: 1px solid #BCB5B5;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    font-size: 1rem;\n    color: #BCB5B5;\n}\n.select-area {\n    margin: 15px 0;\n    height: 25%;\n}\n.select-item-header {\n    display: flex;\n    position: relative;\n}\n.select-item-header .button-area button {\n    display: block;\n\tposition: relative;\n    border-radius: 10px;\n\twidth: auto;\n    max-width: 80px;\n\ttext-align: center;\n\ttext-decoration: none;\n\tcolor:white;\n\tbackground: #BCB5B5;\n    margin-right: 20px;\n    font-size: .8rem;\n}\n.select-item-header .button-area button:hover {\n    opacity:0.8;\n\tcursor: pointer;\n\ttext-decoration: none;\n}\n.select-item-header .button-area button:focus{\n    outline:0;\n}\n.button-area {\n    display: flex;\n    justify-content: flex-end;\n    width: 50%;\n}\n.selected-item {\n    border: solid 1px #BCB5B5;\n    margin: 3px 3px;\n    width: 90%;\n    max-width: 500px;\n    height: 40%;\n    min-height: 70px;\n    max-height: 100px;\n    display: flex;\n    flex-wrap: wrap;\n    padding: 5px 3px;\n\n    overflow-y: scroll;\n}\n.selected-item p {\n    display: block;\n    border-radius: 10px;\n\tcolor:white;\n\tbackground: #EF866B;\n    font-size: .8;\n    width: auto;\n    text-align: center;\n    height: 25px;\n    padding: 1px 5px;\n    margin: 1px;\n    font-weight: normal;\n}\n", ""]);
 
 // exports
 
@@ -20752,14 +20777,24 @@ var render = function() {
                     attrs: { type: "button" },
                     on: { click: _vm.onClickIsCategoryModalShow }
                   },
-                  [_vm._v("選択")]
+                  [_vm._v(_vm._s(_vm.categorySelectText))]
                 )
               ])
             ]),
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "selected-item" },
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.isSelectedCategoryItem,
+                    expression: "isSelectedCategoryItem"
+                  }
+                ],
+                staticClass: "selected-item"
+              },
               _vm._l(_vm.categorySelectedItemList, function(element) {
                 return _c("p", { key: element.id }, [
                   _vm._v(_vm._s(element.data))
@@ -20780,14 +20815,24 @@ var render = function() {
                     attrs: { type: "button" },
                     on: { click: _vm.onClickIsMaterialModalShow }
                   },
-                  [_vm._v("選択")]
+                  [_vm._v(_vm._s(_vm.materialSelectText))]
                 )
               ])
             ]),
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "selected-item" },
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.isSelectedMaterialItem,
+                    expression: "isSelectedMaterialItem"
+                  }
+                ],
+                staticClass: "selected-item"
+              },
               _vm._l(_vm.materialSelectedItemList, function(element) {
                 return _c("p", { key: element.id }, [
                   _vm._v(_vm._s(element.data))

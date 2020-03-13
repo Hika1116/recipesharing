@@ -11,10 +11,10 @@
                 <div class="select-item-header">
                     <p>カテゴリー</p>
                     <div class="button-area">
-                        <button type="button" v-on:click="onClickIsCategoryModalShow">選択</button>
+                        <button type="button" v-on:click="onClickIsCategoryModalShow">{{categorySelectText}}</button>
                     </div>
                 </div>
-                <div class="selected-item">
+                <div class="selected-item" v-show="isSelectedCategoryItem">
                     <p v-for="element in categorySelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
@@ -23,10 +23,10 @@
                 <div class="select-item-header">
                     <p>材料</p>
                     <div class="button-area">
-                        <button type="button" v-on:click="onClickIsMaterialModalShow">選択</button>
+                        <button type="button" v-on:click="onClickIsMaterialModalShow">{{materialSelectText}}</button>
                     </div>
                 </div>
-                <div class="selected-item">
+                <div class="selected-item" v-show="isSelectedMaterialItem">
                     <p v-for="element in materialSelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
@@ -72,6 +72,30 @@ export default {
             modalMaterialTitle:'材料',
             categorySelectedItemList:[],
             materialSelectedItemList:[],
+            selectTitle: function(){
+                return "選択";
+            }
+        }
+    },
+    computed:{
+        categorySelectText(){
+            if(this.categorySelectedItemList.length > 0){
+                return "選択";
+            }
+            return "未選択";
+        },
+        materialSelectText(){
+            if(this.materialSelectedItemList.length > 0){
+                return "選択";
+            }
+            return "未選択";
+        },
+        isSelectedCategoryItem(){
+            
+            return this.categorySelectedItemList.length > 0;
+        },
+        isSelectedMaterialItem(){
+            return this.materialSelectedItemList.length > 0;
         }
     },
     methods:{
@@ -99,7 +123,13 @@ export default {
 </script>
 
 <style>
-
+.select-item-header p span {
+    background-color: #F7B46B;
+    border-radius: 50%;
+    font-size: 12pt;
+    color: white;
+    padding: 3pt;
+}
 #submit-button-area {
     display: flex;
     justify-content: center;
@@ -194,7 +224,8 @@ form p {
     display: block;
 	position: relative;
     border-radius: 10px;
-	width: 50px;
+	width: auto;
+    max-width: 80px;
 	text-align: center;
 	text-decoration: none;
 	color:white;
@@ -216,7 +247,7 @@ form p {
     width: 50%;
 }
 .selected-item {
-    border: 1px solid #BCB5B5;
+    border: solid 1px #BCB5B5;
     margin: 3px 3px;
     width: 90%;
     max-width: 500px;
@@ -229,6 +260,7 @@ form p {
 
     overflow-y: scroll;
 }
+
 .selected-item p {
     display: block;
     border-radius: 10px;
