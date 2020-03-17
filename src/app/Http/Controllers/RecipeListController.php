@@ -26,7 +26,14 @@ class RecipeListController extends Controller
 
     public function search(){
         $recipe_card_list = $this->createRecipeList();
-        return view('pages.recipe_list')->with('recipe_card_list', json_encode($recipe_card_list, JSON_PRETTY_PRINT));
+        $category_array = $this->getCategoryArrayData();
+        $material_array = $this->getMaterialArrayData();
+
+        return view('pages.recipe_list')->with(
+            ['recipe_card_list'=>json_encode($recipe_card_list, JSON_PRETTY_PRINT),
+            'category_array'=>json_encode($category_array, JSON_PRETTY_PRINT),
+            'material_array'=>json_encode($material_array, JSON_PRETTY_PRINT),
+            ]);
     }
 
     /**

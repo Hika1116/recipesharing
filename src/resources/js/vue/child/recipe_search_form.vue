@@ -1,10 +1,10 @@
 <template>
     <div id="recipe_search_form">
         <h2>検索条件</h2>
-        <form method="GET" action="/search" onsubmit="return false;">
+        <div id="form-area">
             <div class="select-title-area">
                 <p>タイトル</p>
-                <input type="text" value="" name="title" placeholder="タイトルを入力">
+                <input type="text" v-model="titleContext" name="title" placeholder="タイトルを入力">
             </div>
 
             <div class="select-area">
@@ -30,10 +30,13 @@
                     <p v-for="element in materialSelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
-            <div id="submit-button-area">
-                <button type="button" onclick=”submit();”>検索</button>
-            </div>
-        </form>
+            <form id="submit-button-area" method="GET" action="/search" onsubmit="return false;">
+                <input type="hidden" name="title">
+                <input type="hidden" name="category">
+                <input type="hidden" name="material">
+                <button type="button" v-on:click="onSubmitSearchRecipe">検索</button>
+            </form>
+        </div>
 
         <!-- 選択用モーダル -->
         <!-- カテゴリー -->
@@ -66,6 +69,7 @@ export default {
     },
     data(){
         return {
+            titleContext:"",
             isCategoryModalShow:false,
             isMateriakModalShow:false,
             modalCategoryTitle:"カテゴリー",
@@ -117,9 +121,36 @@ export default {
         getMaterialSelectItem:function(resultArray){
             this.isMateriakModalShow = false;
             this.materialSelectedItemList = resultArray;
+        },
+        onSubmitSearchRecipe:function(){
+            var form = document.getElementById("submit-button-area");
+            form.method = "get";
+            form.title.value = this.titleContext;
+            form.category.value = this.categorySelectedItemList;
+            form.material.value = this.materialSelectedItemList;
+            form.action = "/search";
+            form.submit();
         }
     }
 }
+
+var createXMLHttpRequest = function createXMLHttpRequest() {
+  if (window.XMLHttpRequest) {
+    return new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try {
+      return new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+      try {
+        return new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (e2) {
+        return null;
+      }
+    }
+  } else {
+    return null;
+  }
+};
 </script>
 
 <style>
@@ -181,13 +212,11 @@ export default {
       padding: 15px;
       border-radius: 10px 10px 0 0;
 }
-#recipe_search_form form {
+#recipe_search_form #form-area {
     height: 85%;
-    /* height: auto; */
-    /* max-height: 85%; */
 }
 
-form p {
+#form-area p {
     margin: 3px 3px;
     color: #BCB5B5;
     width: 50%;
@@ -246,7 +275,7 @@ form p {
     justify-content: flex-end;
     width: 50%;
 }
-.selected-item {
+#form-area .select-area .selected-item {
     border: solid 1px #BCB5B5;
     margin: 3px 3px;
     width: 90%;
@@ -261,7 +290,7 @@ form p {
     overflow-y: scroll;
 }
 
-.selected-item p {
+#form-area .select-area .selected-item p {
     display: block;
     border-radius: 10px;
 	color:white;
