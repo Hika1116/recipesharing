@@ -4,7 +4,9 @@
     <div id="warapper_recipe_search">
         <recipe-search-form
             :category-array="categoryArray"
-            :material-array="materialArray"></recipe-search-form>
+            :material-array="materialArray"
+            :category-form-selected-items="categoryFormSelectedItems"
+            :material-form-selected-items="materialFormSelectedItems"></recipe-search-form>
     </div>
     <div id='wrapper-recipe'>
         <h2>レシピ一覧 <i class="fas fa-list-alt"></i></h2>
@@ -39,6 +41,8 @@ export default {
         recipeCardList:String,
         categoryArray:String,
         materialArray:String,
+        categoryFormSelectedItems:String,
+        materialFormSelectedItems:String,
     },
     components:{
         RecipeList:RecipeCard,

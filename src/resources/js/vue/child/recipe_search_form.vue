@@ -66,6 +66,8 @@ export default {
     props:{
         categoryArray:String,
         materialArray:String,
+        categoryFormSelectedItems:String,
+        materialFormSelectedItems:String,
     },
     data(){
         return {
@@ -79,6 +81,14 @@ export default {
             selectTitle: function(){
                 return "選択";
             }
+        }
+    },
+    created(){
+        if(this.categoryFormSelectedItems.length > 0){
+            this.categorySelectedItemList = JSON.parse(this.categoryFormSelectedItems);
+        }
+        if(this.materialFormSelectedItems.length > 0){
+            this.materialSelectedItemList = JSON.parse(this.materialFormSelectedItems);
         }
     },
     computed:{
@@ -126,8 +136,10 @@ export default {
             var form = document.getElementById("submit-button-area");
             form.method = "get";
             form.title.value = this.titleContext;
-            form.category.value = this.categorySelectedItemList;
-            form.material.value = this.materialSelectedItemList;
+            console.log(this.categorySelectedItemList);
+
+            form.category.value = JSON.stringify(this.categorySelectedItemList);
+            form.material.value = JSON.stringify(this.materialSelectedItemList);
             form.action = "/search";
             form.submit();
         }
@@ -195,7 +207,6 @@ var createXMLHttpRequest = function createXMLHttpRequest() {
 #recipe_search_form {
     width: 250px;
     height: auto;
-    max-height: 50%;
     box-shadow: 0 0 3px #BCB5B5;
     margin: 0 20px;
     border-radius: 13px;

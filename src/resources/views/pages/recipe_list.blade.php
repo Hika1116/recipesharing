@@ -9,6 +9,8 @@
   <recipe-list-parent 
   recipe-card-list="{{$recipe_card_list}}"
   category-array="{{$category_array}}"
-  material-array="{{$material_array}}"></recipe-list-parent>
+  material-array="{{$material_array}}"
+  category-form-selected-items="{{$category_form_selected_items}}"
+  material-form-selected-items="{{$material_form_selected_items}}"></recipe-list-parent>
   </div>
  @endsection
