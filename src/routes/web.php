@@ -15,8 +15,8 @@ Route::get('/introduce', 'IntroduceController@index')->name('introduce');
 
 Route::get('/recipes', 'RecipeListController@index')->name('recipes');
 
-Route::get('/search', 'RecipeListController@search')->name('search');
+Route::get('/recipes/search', 'RecipeListController@search')->name('search');
 
-Route::get('/mypage/{user_id}', 'MyPageController@index')->name('mypage');
+Route::get('/user/{user_id}', 'MyPageController@index')->name('user');
 
 Route::get('/recipe/add', 'RecipeController@add')->name('add');

@@ -17,7 +17,7 @@
 export default {
     data(){
         return {
-            mypageUrl:'/mypage/' + 1,
+            mypageUrl:'/user/' + 1,
         }
     }
 }

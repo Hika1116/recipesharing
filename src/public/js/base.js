@@ -113,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      mypageUrl: '/mypage/' + 1
+      mypageUrl: '/user/' + 1
     };
   }
 });

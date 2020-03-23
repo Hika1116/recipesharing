@@ -2112,7 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.categorySelectedItemList);
       form.category.value = JSON.stringify(this.categorySelectedItemList);
       form.material.value = JSON.stringify(this.materialSelectedItemList);
-      form.action = "/search";
+      form.action = "/recipes/search";
       form.submit();
     }
   }
@@ -20917,7 +20917,7 @@ var render = function() {
             attrs: {
               id: "submit-button-area",
               method: "GET",
-              action: "/search",
+              action: "/recipes/search",
               onsubmit: "return false;"
             }
           },

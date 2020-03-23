@@ -30,7 +30,7 @@
                     <p v-for="element in materialSelectedItemList" :key="element.id">{{element.data}}</p>
                 </div>
             </div>
-            <form id="submit-button-area" method="GET" action="/search" onsubmit="return false;">
+            <form id="submit-button-area" method="GET" action="/recipes/search" onsubmit="return false;">
                 <input type="hidden" name="title">
                 <input type="hidden" name="category">
                 <input type="hidden" name="material">
@@ -140,7 +140,7 @@ export default {
 
             form.category.value = JSON.stringify(this.categorySelectedItemList);
             form.material.value = JSON.stringify(this.materialSelectedItemList);
-            form.action = "/search";
+            form.action = "/recipes/search";
             form.submit();
         }
     }
