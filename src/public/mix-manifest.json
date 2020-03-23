@@ -1,6 +1,8 @@
 {
+    "/js/add_recipe.js": "/js/add_recipe.js?id=ca0c7e31aa2940abe07e",
     "/js/app.js": "/js/app.js?id=735d0c45db5191808b8a",
-    "/js/base.js": "/js/base.js?id=dc66291b3e9b714e7706",
+    "/js/base.js": "/js/base.js?id=ac4d212520d97e50384c",
     "/js/introduce.js": "/js/introduce.js?id=c7047bf5db2eecf1ee16",
+    "/js/mypage.js": "/js/mypage.js?id=665ca8674092cc338f25",
     "/js/recipe_list.js": "/js/recipe_list.js?id=5f757bb92f71f40e4c73"
 }

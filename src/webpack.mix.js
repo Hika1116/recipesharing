@@ -8,4 +8,6 @@ mix.browserSync({ // ファイル監視設定
         .js('resources/js/app.js', 'public/js').version()
         .js('resources/js/base.js', 'public/js').version()
         .js('resources/js/introduce.js', 'public/js').version()
-        .js('resources/js/recipe_list.js', 'public/js').version();
+        .js('resources/js/recipe_list.js', 'public/js').version()
+        .js('resources/js/mypage.js', 'public/js').version()
+        .js('resources/js/add_recipe.js', 'public/js').version();

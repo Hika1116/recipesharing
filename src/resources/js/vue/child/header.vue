@@ -1,11 +1,11 @@
 <template>
-    <header class="container">
+    <header>
         <div class="title">
             <h2>Recipe Sharing</h2>
         </div>
         <div class="menu">
             <ul>
-                <li><a href="#">Hikaru</a></li>
+                <li><a v-bind:href="mypageUrl">Hikaru</a></li>
                 <li>|</li>
                 <li><a href="#">LogOut</a></li>
             </ul>
@@ -13,10 +13,25 @@
     </header>
 </template>
 
-<style>
-    .container {
-        display: flex;
+<script>
+export default {
+    data(){
+        return {
+            mypageUrl:'/mypage/' + 1,
+        }
     }
+}
+</script>
+
+<style>
+    header {
+        display: flex;
+        width: 100%;
+        height: 60px; 
+        text-align: center;
+        background-color: #BCB5B5;
+    }
+
     .title {
         display: flex;
         align-items: center;
@@ -52,10 +67,5 @@
         opacity: 0.6;
     }
     
-    .container {
-        width: 100%;
-        height: 60px; 
-        text-align: center;
-        background-color: #BCB5B5;
-    }
+    
 </style>

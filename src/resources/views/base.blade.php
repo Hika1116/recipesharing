@@ -18,12 +18,20 @@
   <div id="header">
     <header-component></header-component>
   </div>
-
+  <div class="container">
     @yield('container')
-
+  </div>
   <div id="footer">
     <footer-component></footer-component>
   </div>
 </body>
+
+<style>
+  .container {
+    width:1260px;
+    margin:0 auto;
+  }
+
+</style>
 </html>
 

@@ -1,6 +1,6 @@
  @extends('base')
  @section('title')
-  Recipe List
+  レシピ一覧
  @endsection
 
  @section('container')

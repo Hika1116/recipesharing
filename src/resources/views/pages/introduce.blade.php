@@ -1,6 +1,6 @@
  @extends('base')
  @section('title')
-  Introduce 
+  Introduce
  @endsection
  @section('container')
 
