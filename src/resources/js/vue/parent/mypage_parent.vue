@@ -3,7 +3,7 @@
     <div id="container">
         <h2>マイページ</h2>
         <p>ユーザー名:{{userName}}</p>
-        <a href="/recipe/add">レシピ追加</a>
+        <a href="/recipes/add">レシピ追加</a>
     </div>
 </template>
 

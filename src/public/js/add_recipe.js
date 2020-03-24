@@ -1950,8 +1950,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {}
+  props: {
+    JsonStrCategoryItemList: String
+  },
+  data: function data() {
+    return {
+      CategoryItemList: []
+    };
+  },
+  created: function created() {
+    if (this.JsonStrCategoryItemList.length > 0) {
+      this.CategoryItemList = JSON.parse(this.JsonStrCategoryItemList);
+    }
+  }
 });
 
 /***/ }),
@@ -1968,7 +1992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.form-style-5{\n\tmax-width: 500px;\n\tpadding: 10px 20px;\n\tbackground: #f4f7f8;\n\tmargin: 10px auto;\n\tpadding: 20px;\n\tbackground: #f4f7f8;\n\tborder-radius: 8px;\n\tfont-family: Georgia, \"Times New Roman\", Times, serif;\n}\n.form-style-5 fieldset{\n\tborder: none;\n}\n.form-style-5 legend {\n\tfont-size: 1.4em;\n\tmargin-bottom: 10px;\n}\n.form-style-5 label {\n\tdisplay: block;\n\tmargin-bottom: 8px;\n}\n.form-style-5 input[type=\"text\"],\n.form-style-5 input[type=\"date\"],\n.form-style-5 input[type=\"datetime\"],\n.form-style-5 input[type=\"email\"],\n.form-style-5 input[type=\"number\"],\n.form-style-5 input[type=\"search\"],\n.form-style-5 input[type=\"time\"],\n.form-style-5 input[type=\"url\"],\n.form-style-5 textarea,\n.form-style-5 select {\n\tfont-family: Georgia, \"Times New Roman\", Times, serif;\n\tbackground: rgba(255,255,255,.1);\n\tborder: none;\n\tborder-radius: 4px;\n\tfont-size: 15px;\n\tmargin: 0;\n\toutline: 0;\n\tpadding: 10px;\n\twidth: 100%;\n\tbox-sizing: border-box; \n\t-webkit-box-sizing: border-box;\n\t-moz-box-sizing: border-box; \n\tbackground-color: #e8eeef;\n\tcolor:#8a97a0;\n\t-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;\n\tbox-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;\n\tmargin-bottom: 30px;\n}\n.form-style-5 input[type=\"text\"]:focus,\n.form-style-5 input[type=\"date\"]:focus,\n.form-style-5 input[type=\"datetime\"]:focus,\n.form-style-5 input[type=\"email\"]:focus,\n.form-style-5 input[type=\"number\"]:focus,\n.form-style-5 input[type=\"search\"]:focus,\n.form-style-5 input[type=\"time\"]:focus,\n.form-style-5 input[type=\"url\"]:focus,\n.form-style-5 textarea:focus,\n.form-style-5 select:focus{\n\tbackground: #d2d9dd;\n}\n.form-style-5 select{\n\t-webkit-appearance: menulist-button;\n\theight:35px;\n}\n.form-style-5 .number {\n\tbackground: #1abc9c;\n\tcolor: #fff;\n\theight: 30px;\n\twidth: 30px;\n\tdisplay: inline-block;\n\tfont-size: 0.8em;\n\tmargin-right: 4px;\n\tline-height: 30px;\n\ttext-align: center;\n\ttext-shadow: 0 1px 0 rgba(255,255,255,0.2);\n\tborder-radius: 15px 15px 15px 0px;\n}\n.form-style-5 input[type=\"submit\"],\n.form-style-5 input[type=\"button\"]\n{\n\tposition: relative;\n\tdisplay: block;\n\tpadding: 19px 39px 18px 39px;\n\tcolor: #FFF;\n\tmargin: 0 auto;\n\tbackground: #1abc9c;\n\tfont-size: 18px;\n\ttext-align: center;\n\tfont-style: normal;\n\twidth: 100%;\n\tborder: 1px solid #16a085;\n\tborder-width: 1px 1px 3px;\n\tmargin-bottom: 10px;\n}\n.form-style-5 input[type=\"submit\"]:hover,\n.form-style-5 input[type=\"button\"]:hover\n{\n\tbackground: #109177;\n}\n", ""]);
+exports.push([module.i, "\n.form-item {\n    display: block;\n    overflow: hidden;\n    margin-bottom: 10px;\n}\n.form-item .form-label {\n    float: left;\n    width: 200px;\n    padding: 5px;\n    margin:0;\n}\n", ""]);
 
 // exports
 
@@ -20200,119 +20224,120 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "container" } }, [
+    _c("h2", [_vm._v("レシピ追加")]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "#", method: "POST" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-item" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "category" } }, [
+          _vm._v("カテゴリー")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { id: "category-checkbox" } },
+          _vm._l(_vm.CategoryItemList, function(category) {
+            return _c(
+              "div",
+              { key: category.id, staticClass: "category-chackbox" },
+              [
+                _c("input", {
+                  attrs: {
+                    type: "checkbox",
+                    name: "category",
+                    id: "category",
+                    value: "category.id"
+                  }
+                }),
+                _vm._v(_vm._s(category.category_name) + "\n                ")
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "submit", value: "送信" } })
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "container" } }, [
-      _c("h2", [_vm._v("レシピ追加")]),
+    return _c("div", { staticClass: "form-item" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "title" } }, [
+        _vm._v("タイトル")
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-style-5" }, [
-        _c("form", [
-          _c("fieldset", [
-            _c("legend", [
-              _c("span", { staticClass: "number" }, [_vm._v("1")]),
-              _vm._v(" Candidate Info")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "field1",
-                placeholder: "Your Name *"
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "email",
-                name: "field2",
-                placeholder: "Your Email *"
-              }
-            }),
-            _vm._v(" "),
-            _c("textarea", {
-              attrs: { name: "field3", placeholder: "About yourself" }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "job" } }, [_vm._v("Interests:")]),
-            _vm._v(" "),
-            _c("select", { attrs: { id: "job", name: "field4" } }, [
-              _c("optgroup", { attrs: { label: "Indoors" } }, [
-                _c("option", { attrs: { value: "fishkeeping" } }, [
-                  _vm._v("Fishkeeping")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "reading" } }, [
-                  _vm._v("Reading")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "boxing" } }, [
-                  _vm._v("Boxing")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "debate" } }, [
-                  _vm._v("Debate")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "gaming" } }, [
-                  _vm._v("Gaming")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "snooker" } }, [
-                  _vm._v("Snooker")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "other_indoor" } }, [
-                  _vm._v("Other")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("optgroup", { attrs: { label: "Outdoors" } }, [
-                _c("option", { attrs: { value: "football" } }, [
-                  _vm._v("Football")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "swimming" } }, [
-                  _vm._v("Swimming")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "fishing" } }, [
-                  _vm._v("Fishing")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "climbing" } }, [
-                  _vm._v("Climbing")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "cycling" } }, [
-                  _vm._v("Cycling")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "other_outdoor" } }, [
-                  _vm._v("Other")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("fieldset", [
-            _c("legend", [
-              _c("span", { staticClass: "number" }, [_vm._v("2")]),
-              _vm._v(" Additional Info")
-            ]),
-            _vm._v(" "),
-            _c("textarea", {
-              attrs: { name: "field3", placeholder: "About Your School" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("input", { attrs: { type: "submit", value: "Apply" } })
-        ])
-      ])
+      _c("input", { attrs: { type: "text", id: "title" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-item" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "title-img" } }, [
+        _vm._v("レシピ画像")
+      ]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "file", id: "title-img" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-item" }, [
+      _c(
+        "label",
+        { staticClass: "form-label", attrs: { for: "description" } },
+        [_vm._v("レシピ紹介文")]
+      ),
+      _vm._v(" "),
+      _c("textarea", { attrs: { id: "description", name: "description" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-item" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "material" } }, [
+        _vm._v("材料")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "text", id: "material", placeholder: "後回し" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-item" }, [
+      _c(
+        "label",
+        { staticClass: "form-label", attrs: { for: "how-to-make" } },
+        [_vm._v("作り方")]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "text", id: "how-to-make", placeholder: "後回し" }
+      })
     ])
   }
 ]

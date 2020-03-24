@@ -28,10 +28,9 @@
 
 <style>
   .container {
-    width:1260px;
+    width:1000px;
     margin:0 auto;
   }
-
 </style>
 </html>
 

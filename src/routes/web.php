@@ -19,4 +19,4 @@ Route::get('/recipes/search', 'RecipeListController@search')->name('search');
 
 Route::get('/user/{user_id}', 'MyPageController@index')->name('user');
 
-Route::get('/recipe/add', 'RecipeController@add')->name('add');
+Route::get('/recipes/add', 'RecipeController@add')->name('add');

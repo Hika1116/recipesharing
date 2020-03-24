@@ -19529,7 +19529,7 @@ var render = function() {
     _vm._v(" "),
     _c("p", [_vm._v("ユーザー名:" + _vm._s(_vm.userName))]),
     _vm._v(" "),
-    _c("a", { attrs: { href: "/recipe/add" } }, [_vm._v("レシピ追加")])
+    _c("a", { attrs: { href: "/recipes/add" } }, [_vm._v("レシピ追加")])
   ])
 }
 var staticRenderFns = []
